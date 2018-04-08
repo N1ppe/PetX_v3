@@ -191,7 +191,8 @@ public class Monsters
     public bool allowEvolution = false;
     public Sprite petVisual;
     public Image inMonsterCatalog;
-    public GameObject petInWorldPrefab;
+    public GameObject petInWorldPrefab,petsAttack;
+    public Animator petsAnimator;
 }
 [System.Serializable]
 public class Buffs

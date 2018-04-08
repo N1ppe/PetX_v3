@@ -65,7 +65,13 @@ public class playerAttacking : MonoBehaviour {
         {
             if (Input.GetButtonDown("attack")&&atkAllow==true)
             {
+                attackSprt = gm.GetComponent<gamemanagement>().Pet.petsAttack;
+                gm.GetComponent<gamemanagement>().Pet.petsAnimator.SetBool("attack", true);
                 StartCoroutine(atkdelay());
+            }
+            else
+            {
+                gm.GetComponent<gamemanagement>().Pet.petsAnimator.SetBool("attack", false);
             }
         }
     }

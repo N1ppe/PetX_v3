@@ -58,15 +58,28 @@ public class playerButtonControl : MonoBehaviour {
         //---------------------------------------------------------------------------------
         if (buttonInt == 1)
         {
+            if (evolves.activeSelf == false)
+            {
                 evolves.SetActive(true);
                 reppu.SetActive(false);
                 map.SetActive(false);
                 Time.timeScale = 0;
                 //Cursor.visible = true;
                 openWindow = openCanvas.evolutions;
+            }
+            else
+            {
+                evolves.SetActive(false);
+                reppu.SetActive(false);
+                map.SetActive(false);
+                Time.timeScale = 1;
+                openWindow = openCanvas.NONE;
+            }
         }
         else if (buttonInt == 2)
         {
+            if (reppu.activeSelf == false)
+            {
                 gm.GetComponent<gamemanagement>().reppuVisuals();
                 evolves.SetActive(false);
                 reppu.SetActive(true);
@@ -74,16 +87,37 @@ public class playerButtonControl : MonoBehaviour {
                 Time.timeScale = 0;
                 //Cursor.visible = true;
                 openWindow = openCanvas.reppu;
+            }
+            else
+            {
+                evolves.SetActive(false);
+                reppu.SetActive(false);
+                map.SetActive(false);
+                Time.timeScale = 1;
+                openWindow = openCanvas.NONE;
+            }
         }
         else if (buttonInt == 3)
         {
+            if (map.activeSelf == false)
+            {
                 evolves.SetActive(false);
                 reppu.SetActive(false);
                 map.SetActive(true);
                 Time.timeScale = 1;
                 //Cursor.visible = true;
                 openWindow = openCanvas.map;
+            }
+            else
+            {
+                evolves.SetActive(false);
+                reppu.SetActive(false);
+                map.SetActive(false);
+                Time.timeScale = 1;
+                openWindow = openCanvas.NONE;
+            }
         }
+
         buttonInt = 0;
         //---------------------------------------------------------------------------------
         if (Input.GetButtonDown("evolutions"))
@@ -177,8 +211,11 @@ public class playerButtonControl : MonoBehaviour {
                     Debug.Log(EventSystem.current.currentSelectedGameObject.name);
                     //gm.GetComponent<gamemanagement>().Pet = gm.GetComponent<gamemanagement>().AllMonsters[g]; //this should work, but it doesnt workaround under
                     gm.GetComponent<gamemanagement>().CurrentPetInt = g+1;
-                    //gm.GetComponent<gamemanagement>().petUIimage.sprite = gm.GetComponent<gamemanagement>().AllMonsters[g].petVisual;
-                    //gm.GetComponent<gamemanagement>().AllMonsters[g].petInWorldPrefab.SetActive(true);
+                    gm.GetComponent<gamemanagement>().petUIimage.sprite = gm.GetComponent<gamemanagement>().AllMonsters[g].petVisual;
+                    gm.GetComponent<gamemanagement>().AllMonsters[g].petInWorldPrefab.SetActive(true);
+                    gm.GetComponent<gamemanagement>().AllMonsters[g].petsAttack.SetActive(true);
+                    gm.GetComponent<gamemanagement>().AllMonsters[g].petsAttack.SetActive(false);
+                    pet.GetComponent<petBehaviour>().animator = gm.GetComponent<gamemanagement>().AllMonsters[g].petsAnimator;
                 }
             }
         }

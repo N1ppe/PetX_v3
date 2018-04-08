@@ -10,11 +10,11 @@ public class petBehaviour : MonoBehaviour {
     
     public GameObject petPosition;
 
-    GameObject petSprite;
+    public GameObject petSprite;
     public GameObject petDark;
     public GameObject petLight;
 
-    Animator animator;
+    public Animator animator;
     public Animator petDarkAnimator;
     public Animator petLightAnimator;
 
@@ -121,7 +121,7 @@ public class petBehaviour : MonoBehaviour {
                 animator.SetFloat("LastMoveY", 0f);
             }
         }
-
+        /*
         if (Input.GetButton("attack"))
         {
             animator.SetBool("attack", true);
@@ -130,5 +130,6 @@ public class petBehaviour : MonoBehaviour {
         {
             animator.SetBool("attack", false);
         }
+        */
     }
 }

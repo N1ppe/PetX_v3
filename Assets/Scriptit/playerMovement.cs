@@ -138,8 +138,6 @@ public class playerMovement : MonoBehaviour {
         }
     }
 }
-
-
 public class Facing : MonoBehaviour
 {
 

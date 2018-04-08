@@ -8,7 +8,7 @@ public class enemyMovement : MonoBehaviour {
     public GameObject player;
     public float distToPlayer;
     public state EnemyState=state.idle;
-    [Range(0,1)]
+    [Range(0,3)]
     public int health;
     //public gamemanagement gm;
     public GameObject gm;
@@ -51,6 +51,17 @@ public class enemyMovement : MonoBehaviour {
         if (EnemyState == state.attack) { enemysAnimator.SetInteger("enemyStateInt", 2); }
         if (EnemyState == state.dead) { enemysAnimator.SetInteger("enemyStateInt", 3); }
     }
+    public void kickbacking()
+    {
+        if (Facing.dirFacing == Facing.directionFacing.down) { this.GetComponent<Rigidbody2D>().AddForce(Vector2.down*70); }
+        if (Facing.dirFacing == Facing.directionFacing.downleft) { this.GetComponent<Rigidbody2D>().AddForce(new Vector2(-1,-1) * 70); }
+        if (Facing.dirFacing == Facing.directionFacing.left) { this.GetComponent<Rigidbody2D>().AddForce(Vector2.left * 70); }
+        if (Facing.dirFacing == Facing.directionFacing.upleft) { this.GetComponent<Rigidbody2D>().AddForce(new Vector2(-1, 1) * 70); }
+        if (Facing.dirFacing == Facing.directionFacing.up) { this.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 70); }
+        if (Facing.dirFacing == Facing.directionFacing.upright) { this.GetComponent<Rigidbody2D>().AddForce(new Vector2(1, 1) * 70); }
+        if (Facing.dirFacing == Facing.directionFacing.right) { this.GetComponent<Rigidbody2D>().AddForce(Vector2.right * 70); }
+        if (Facing.dirFacing == Facing.directionFacing.downright) { this.GetComponent<Rigidbody2D>().AddForce(new Vector2(1, -1) * 70); }
+    }
     IEnumerator randDelay()
     {
         if (health < 0)
@@ -61,6 +72,7 @@ public class enemyMovement : MonoBehaviour {
     }
     IEnumerator deathStateOperation()
     {
+        this.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
         yield return new WaitForSeconds(2f);
         this.gameObject.GetComponent<lootDrop>().itemAssigningAndSpawn();
         Destroy(gameObject);
@@ -69,7 +81,9 @@ public class enemyMovement : MonoBehaviour {
     {
         if (other.gameObject.tag == "Player" )
         {
-           health =-1;
+            health = health-1;
+            Debug.Log("qwertyuiop");
+            kickbacking();
         }
     }
 }
