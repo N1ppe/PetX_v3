@@ -13,10 +13,12 @@ public class petBehaviour : MonoBehaviour {
     public GameObject petSprite;
     public GameObject petDark;
     public GameObject petLight;
+    public GameObject petBaguette;
 
     public Animator animator;
     public Animator petDarkAnimator;
     public Animator petLightAnimator;
+    public Animator petBaguetteAnimator;
 
     void Start ()
     {

@@ -31,7 +31,8 @@ public class houseSceneVersion : MonoBehaviour {
 
                     if (Inside == true)
                     {
-                        SceneManager.LoadScene(i);
+                        other.transform.position = gm.GetComponent<gamemanagement>().enterableBuildings[i].locationOnMapReturn;
+                        pet.transform.position = gm.GetComponent<gamemanagement>().enterableBuildings[i].locationOnMapReturn;
                     }
                     else if (Inside == false)
                     {

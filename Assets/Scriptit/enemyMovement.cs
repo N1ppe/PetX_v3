@@ -79,7 +79,7 @@ public class enemyMovement : MonoBehaviour {
     }
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Player" )
+        if (other.gameObject.tag == "PlayerAttack" )
         {
             health = health-1;
             Debug.Log("qwertyuiop");

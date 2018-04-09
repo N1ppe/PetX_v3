@@ -157,9 +157,9 @@ public class gamemanagement : MonoBehaviour {
         }
 
 
-        if (CurrentPetInt == 1)
+        if (CurrentPetInt == 3)
         {
-            if (Pet.strength == 100) { AllMonsters[2].allowEvolution = true; }
+            if (Pet.strength == 100) { AllMonsters[3].allowEvolution = true; }
             if (Pet.agility == 100) { }
             if (Pet.wisdom == 100) { }
             if (Pet.luck == 1000) { }
@@ -220,5 +220,5 @@ public class houses
 {
     public string name;
     public int sceneIndex;
-    public Vector3 locationOnMap;
+    public Vector3 locationOnMap,locationOnMapReturn;
 }

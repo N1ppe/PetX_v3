@@ -51,7 +51,7 @@ public class playerAttacking : MonoBehaviour {
     public void PlayerIsDead()
     {
         //fade screen out
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
         gm.GetComponent<gamemanagement>().day += 1;
         gm.GetComponent<gamemanagement>().timeOfDay = 6;
         this.gameObject.transform.position = bedLocation;
