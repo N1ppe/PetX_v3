@@ -208,13 +208,14 @@ public class playerButtonControl : MonoBehaviour {
             {
                 if (EventSystem.current.currentSelectedGameObject.GetComponentInChildren<Text>().text == gm.GetComponent<gamemanagement>().AllMonsters[g].name && gm.GetComponent<gamemanagement>().AllMonsters[g].allowEvolution==true)
                 {
+                    Debug.Log(EventSystem.current.currentSelectedGameObject.GetComponentInChildren<Text>().text);
                     Debug.Log(EventSystem.current.currentSelectedGameObject.name);
                     //gm.GetComponent<gamemanagement>().Pet = gm.GetComponent<gamemanagement>().AllMonsters[g]; //this should work, but it doesnt workaround under
                     gm.GetComponent<gamemanagement>().CurrentPetInt = g+1;
                     gm.GetComponent<gamemanagement>().petUIimage.sprite = gm.GetComponent<gamemanagement>().AllMonsters[g].petVisual;
                     gm.GetComponent<gamemanagement>().AllMonsters[g].petInWorldPrefab.SetActive(true);
-                    gm.GetComponent<gamemanagement>().AllMonsters[g].petsAttack.SetActive(true);
-                    gm.GetComponent<gamemanagement>().AllMonsters[g].petsAttack.SetActive(false);
+                    //gm.GetComponent<gamemanagement>().AllMonsters[g].petsAttack.SetActive(true);
+                    //gm.GetComponent<gamemanagement>().AllMonsters[g].petsAttack.SetActive(false);
                     pet.GetComponent<petBehaviour>().animator = gm.GetComponent<gamemanagement>().AllMonsters[g].petsAnimator;
                 }
             }
