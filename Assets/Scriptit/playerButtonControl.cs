@@ -51,6 +51,7 @@ public class playerButtonControl : MonoBehaviour {
         {
             evolves.SetActive(false);
             reppu.SetActive(false);
+            quests.SetActive(false);
             map.SetActive(false);
             Time.timeScale = 1;
             openWindow = openCanvas.NONE;
@@ -115,7 +116,7 @@ public class playerButtonControl : MonoBehaviour {
                 map.SetActive(false);
                 Time.timeScale = 1;
                 //Cursor.visible = true;
-                openWindow = openCanvas.map;
+                openWindow = openCanvas.quests;
             }
             else
             {
@@ -164,6 +165,7 @@ public class playerButtonControl : MonoBehaviour {
             {
                 evolves.SetActive(true);
                 reppu.SetActive(false);
+                quests.SetActive(false);
                 map.SetActive(false);
                 Time.timeScale = 0;
                 openWindow = openCanvas.evolutions;
@@ -181,6 +183,7 @@ public class playerButtonControl : MonoBehaviour {
             {
                 evolves.SetActive(false);
                 reppu.SetActive(true);
+                quests.SetActive(false);
                 map.SetActive(false);
                 Time.timeScale = 0;
                 openWindow = openCanvas.reppu;
@@ -190,17 +193,18 @@ public class playerButtonControl : MonoBehaviour {
         {
             if (openWindow == openCanvas.quests)
             {
-                reppu.SetActive(false);
+                quests.SetActive(false);
                 Time.timeScale = 1;
                 openWindow = openCanvas.NONE;
             }
             else
             {
                 evolves.SetActive(false);
-                reppu.SetActive(true);
+                reppu.SetActive(false);
+                quests.SetActive(true);
                 map.SetActive(false);
                 Time.timeScale = 0;
-                openWindow = openCanvas.reppu;
+                openWindow = openCanvas.quests;
             }
         }
         else if (Input.GetButtonDown("map"))
@@ -215,6 +219,7 @@ public class playerButtonControl : MonoBehaviour {
             {
                 evolves.SetActive(false);
                 reppu.SetActive(false);
+                quests.SetActive(false);
                 map.SetActive(true);
                 Time.timeScale = 1;
                 openWindow = openCanvas.map;

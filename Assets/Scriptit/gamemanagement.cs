@@ -33,6 +33,10 @@ public class gamemanagement : MonoBehaviour {
     //public Buffs[] buffs;
     public Items[] AllItems;
     public houses[] enterableBuildings;
+    public tehtavat[] quests;
+    [Header("__________________________")]
+    public Sprite[] questSprites;
+    public Text[] questLogTexts,logItemCheckTexts;
     public GameObject evolvingCanvas;
     public Image petImg, petNextEvolveImg,animation;
     public Text[] reppuText;
@@ -225,7 +229,15 @@ public class houses
 [System.Serializable]
 public class tehtavat
 {
+    public string questName;
+    public tehtavatSubItem[] itemsToLookFor;
+    public Sprite qSprt;
+
+}
+[System.Serializable]
+public class tehtavatSubItem
+{
     public string name;
-    public string description;
-    //public int 
+    public int itemAmount, amountNeeded;
+
 }
