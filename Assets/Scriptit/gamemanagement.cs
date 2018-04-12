@@ -35,7 +35,7 @@ public class gamemanagement : MonoBehaviour {
     public houses[] enterableBuildings;
     public tehtavat[] quests;
     [Header("__________________________")]
-    public Sprite[] questSprites;
+    public Image[] questUiSprites;
     public Text[] questLogTexts,logItemCheckTexts;
     public GameObject evolvingCanvas;
     public Image petImg, petNextEvolveImg,animation;

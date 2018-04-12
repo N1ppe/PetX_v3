@@ -253,7 +253,7 @@ public class playerButtonControl : MonoBehaviour {
         {
             for (int u = 0; u < gm.GetComponent<gamemanagement>().AllMonsters.Length; u++)
             {
-                if(gm.GetComponent<gamemanagement>().AllMonsters[u].petInWorldPrefab != null)
+                if (gm.GetComponent<gamemanagement>().AllMonsters[u].petInWorldPrefab != null)
                 {
                     gm.GetComponent<gamemanagement>().AllMonsters[u].petInWorldPrefab.SetActive(false);//disables all
                 }
