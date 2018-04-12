@@ -30,7 +30,7 @@ public class gamemanagement : MonoBehaviour {
     [Range(1,20)]
     public int CurrentPetInt;
     public Monsters[] AllMonsters;
-    public Buffs[] buffs;
+    //public Buffs[] buffs;
     public Items[] AllItems;
     public houses[] enterableBuildings;
     public GameObject evolvingCanvas;
@@ -221,4 +221,11 @@ public class houses
     public string name;
     public int sceneIndex;
     public Vector3 locationOnMap,locationOnMapReturn;
+}
+[System.Serializable]
+public class tehtavat
+{
+    public string name;
+    public string description;
+    //public int 
 }

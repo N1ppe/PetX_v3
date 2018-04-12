@@ -7,9 +7,9 @@ using UnityEngine.EventSystems;
 public class playerButtonControl : MonoBehaviour {
 
     public gamemanagement gm;
-    [Range(0,3)]
+    [Range(0,4)]
     public int buttonInt=0;
-    public GameObject evolves,reppu,map,sleep;
+    public GameObject evolves,reppu,quests,map,sleep;
     public Vector3 bedPosition;
     public openCanvas openWindow;
     public GameObject pet;
@@ -37,9 +37,13 @@ public class playerButtonControl : MonoBehaviour {
     {
         buttonInt = 2;
     }
-    public void mb()
+    public void qb()
     {
         buttonInt = 3;
+    }
+    public void mb()
+    {
+        buttonInt = 4;
     }
     public void escaping()
     {
@@ -62,6 +66,7 @@ public class playerButtonControl : MonoBehaviour {
             {
                 evolves.SetActive(true);
                 reppu.SetActive(false);
+                quests.SetActive(false);
                 map.SetActive(false);
                 Time.timeScale = 0;
                 //Cursor.visible = true;
@@ -71,6 +76,7 @@ public class playerButtonControl : MonoBehaviour {
             {
                 evolves.SetActive(false);
                 reppu.SetActive(false);
+                quests.SetActive(false);
                 map.SetActive(false);
                 Time.timeScale = 1;
                 openWindow = openCanvas.NONE;
@@ -83,6 +89,7 @@ public class playerButtonControl : MonoBehaviour {
                 gm.GetComponent<gamemanagement>().reppuVisuals();
                 evolves.SetActive(false);
                 reppu.SetActive(true);
+                quests.SetActive(false);
                 map.SetActive(false);
                 Time.timeScale = 0;
                 //Cursor.visible = true;
@@ -92,6 +99,7 @@ public class playerButtonControl : MonoBehaviour {
             {
                 evolves.SetActive(false);
                 reppu.SetActive(false);
+                quests.SetActive(false);
                 map.SetActive(false);
                 Time.timeScale = 1;
                 openWindow = openCanvas.NONE;
@@ -99,10 +107,33 @@ public class playerButtonControl : MonoBehaviour {
         }
         else if (buttonInt == 3)
         {
+            if (quests.activeSelf == false)
+            {
+                evolves.SetActive(false);
+                reppu.SetActive(false);
+                quests.SetActive(true);
+                map.SetActive(false);
+                Time.timeScale = 1;
+                //Cursor.visible = true;
+                openWindow = openCanvas.map;
+            }
+            else
+            {
+                evolves.SetActive(false);
+                reppu.SetActive(false);
+                quests.SetActive(false);
+                map.SetActive(false);
+                Time.timeScale = 1;
+                openWindow = openCanvas.NONE;
+            }
+        }
+        else if (buttonInt == 4)
+        {
             if (map.activeSelf == false)
             {
                 evolves.SetActive(false);
                 reppu.SetActive(false);
+                quests.SetActive(false);
                 map.SetActive(true);
                 Time.timeScale = 1;
                 //Cursor.visible = true;
@@ -112,6 +143,7 @@ public class playerButtonControl : MonoBehaviour {
             {
                 evolves.SetActive(false);
                 reppu.SetActive(false);
+                quests.SetActive(false);
                 map.SetActive(false);
                 Time.timeScale = 1;
                 openWindow = openCanvas.NONE;
@@ -140,6 +172,23 @@ public class playerButtonControl : MonoBehaviour {
         else if (Input.GetButtonDown("reppu"))
         {
             if (openWindow == openCanvas.reppu)
+            {
+                reppu.SetActive(false);
+                Time.timeScale = 1;
+                openWindow = openCanvas.NONE;
+            }
+            else
+            {
+                evolves.SetActive(false);
+                reppu.SetActive(true);
+                map.SetActive(false);
+                Time.timeScale = 0;
+                openWindow = openCanvas.reppu;
+            }
+        }
+        else if (Input.GetButtonDown("quests"))
+        {
+            if (openWindow == openCanvas.quests)
             {
                 reppu.SetActive(false);
                 Time.timeScale = 1;
@@ -294,5 +343,5 @@ public class mapWaypoints
     }
 public enum openCanvas
 {
-NONE,evolutions,reppu,map
+NONE,evolutions,quests,reppu,map
 }
