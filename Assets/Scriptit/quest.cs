@@ -9,11 +9,12 @@ public class quest : MonoBehaviour
     public bool startedQuest=false;
     public missionNames questName;
 
-    public int missionAndvancement=0;
+    public int missionAdvancement;
     [TextArea(1, 15)]
     public string[] logtexts;
     [Header("Quest Advancer")]
     public bool isQuestAdvancer = false;
+    public GameObject parent;
     public int advCapInt = 0;
 
     void Start ()
@@ -26,7 +27,7 @@ public class quest : MonoBehaviour
 
         if (isQuestAdvancer == true)
         {
-
+            //missionAndvancement = parent.GetComponent<quest>().missionAndvancement;
         }
     }
     public void missionsUi()
@@ -110,12 +111,12 @@ public class quest : MonoBehaviour
         {
             if (questNameCheck == gm.GetComponent<gamemanagement>().quests[r].questName)//from quests list
             {
-                for(int t=0;t< logtexts.Length; t++)
+                for(int t=0;t< parent.GetComponent<quest>().logtexts.Length; t++)
                 {
-                    if (missionAndvancement < logtexts.Length)
+                    if (parent.GetComponent<quest>().missionAdvancement < parent.GetComponent<quest>().logtexts.Length)
                     {
-                        gm.GetComponent<gamemanagement>().questLogTexts[r].text = logtexts[missionAndvancement];
-                        missionAndvancement = missionAndvancement + 1;
+                        gm.GetComponent<gamemanagement>().questLogTexts[r].text = parent.GetComponent<quest>().logtexts[parent.GetComponent<quest>().missionAdvancement];
+                        parent.GetComponent<quest>().missionAdvancement = parent.GetComponent<quest>().missionAdvancement + 1;
                         return;
                     }
                 }
@@ -127,7 +128,23 @@ public class quest : MonoBehaviour
         switch (questName)
         {
             case missionNames.Gaia:
-                if(missionAndvancement==1)
+                if (parent.GetComponent<quest>().missionAdvancement == 0 && advCapInt == 1)
+                {
+                    for (int e = 0; e < gm.GetComponent<gamemanagement>().playersBackpack.Length; e++)
+                    {
+                        if (gm.GetComponent<gamemanagement>().playersBackpack[e].name == "")
+                        {
+                            gm.GetComponent<gamemanagement>().playersBackpack[e].name = gm.GetComponent<gamemanagement>().AllItems[5].name;
+                            gm.GetComponent<gamemanagement>().playersBackpack[e].description = gm.GetComponent<gamemanagement>().AllItems[5].description;
+                            gm.GetComponent<gamemanagement>().playersBackpack[e].itemPropertyInt = gm.GetComponent<gamemanagement>().AllItems[5].itemPropertyInt;
+                            gm.GetComponent<gamemanagement>().playersBackpack[e].sellCost = gm.GetComponent<gamemanagement>().AllItems[5].sellCost;
+                            gm.GetComponent<gamemanagement>().playersBackpack[e].itemImage = gm.GetComponent<gamemanagement>().AllItems[5].itemImage;
+                            missionsUiUpdating();
+                            return;
+                        }
+                    }
+                }
+                else if (parent.GetComponent<quest>().missionAdvancement==1 && advCapInt == 2)
                 {
                     for (int e = 0; e < gm.GetComponent<gamemanagement>().playersBackpack.Length; e++)
                     {
@@ -142,7 +159,7 @@ public class quest : MonoBehaviour
                         }
                     }
                 }
-                if (missionAndvancement == 2)
+                else if (parent.GetComponent<quest>().missionAdvancement == 2 && advCapInt == 3)
                 {
                     for (int et = 0; et < gm.GetComponent<gamemanagement>().playersBackpack.Length; et++)
                     {
@@ -184,6 +201,7 @@ public class quest : MonoBehaviour
                 startedQuest = true;
                 missionsOperation();
             }
+            else if (isQuestAdvancer == true && startedQuest==false) { missionsOperation(); startedQuest = true; }
         }
     }
     void OnTriggerStay2D(Collider2D other)
