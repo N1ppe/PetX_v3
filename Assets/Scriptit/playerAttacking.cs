@@ -35,6 +35,12 @@ public class playerAttacking : MonoBehaviour {
             attackSprt = attackSpriteLight;
         }
 
+        if(gm.GetComponent<gamemanagement>().Pet == gm.GetComponent<gamemanagement>().AllMonsters[0])
+        {
+            attackingOn = false;
+        }
+        else { attackingOn = true; }
+
         calcHealth();
         attackControls();
         spriteRot();
@@ -71,8 +77,8 @@ public class playerAttacking : MonoBehaviour {
             }
             else
             {
-                if(gm.gameObject.activeInHierarchy)
-                gm.GetComponent<gamemanagement>().Pet.petsAnimator.SetBool("attack", false);
+                if (gm.GetComponent<Animator>()!=null)
+                { gm.GetComponent<gamemanagement>().Pet.petsAnimator.SetBool("attack", false); }
             }
         }
     }

@@ -28,16 +28,17 @@ public class houseSceneVersion : MonoBehaviour {
             {
                 if(houseNroIndex == gm.GetComponent<gamemanagement>().enterableBuildings[i].sceneIndex)
                 {
-
                     if (Inside == true)
                     {
                         other.transform.position = gm.GetComponent<gamemanagement>().enterableBuildings[i].locationOnMapReturn;
                         pet.transform.position = gm.GetComponent<gamemanagement>().enterableBuildings[i].locationOnMapReturn;
+                        return;
                     }
                     else if (Inside == false)
                     {
                         other.transform.position = gm.GetComponent<gamemanagement>().enterableBuildings[i].locationOnMap;
                         pet.transform.position = gm.GetComponent<gamemanagement>().enterableBuildings[i].locationOnMap;
+                        return;
                     }
 
                 }
