@@ -71,6 +71,7 @@ public class playerAttacking : MonoBehaviour {
             }
             else
             {
+                if(gm.gameObject.activeInHierarchy)
                 gm.GetComponent<gamemanagement>().Pet.petsAnimator.SetBool("attack", false);
             }
         }
