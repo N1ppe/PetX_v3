@@ -18,6 +18,9 @@ public class playerButtonControl : MonoBehaviour {
     public mapWaypoints[] waypoints;
     Animator animator;
 
+    public EventSystem eventSystem;
+    public Button b1, b2, b3, b4;
+
 	void Start ()
     {
         pet = GameObject.FindWithTag("Pet");
@@ -253,7 +256,7 @@ public class playerButtonControl : MonoBehaviour {
         {
             for (int u = 0; u < gm.GetComponent<gamemanagement>().AllMonsters.Length; u++)
             {
-                if (gm.GetComponent<gamemanagement>().AllMonsters[u].petInWorldPrefab != null)
+                if(gm.GetComponent<gamemanagement>().AllMonsters[u].petInWorldPrefab != null)
                 {
                     gm.GetComponent<gamemanagement>().AllMonsters[u].petInWorldPrefab.SetActive(false);//disables all
                 }
@@ -272,6 +275,7 @@ public class playerButtonControl : MonoBehaviour {
                     pet.GetComponent<petBehaviour>().animator = gm.GetComponent<gamemanagement>().AllMonsters[g].petsAnimator;
                 }
             }
+            eventSystem.SetSelectedGameObject(null);
         }
     }
     #region mapButtons
