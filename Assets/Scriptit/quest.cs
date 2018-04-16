@@ -6,6 +6,7 @@ public class quest : MonoBehaviour
 {
     [Header("TO GET TO NEXT TEXT, CALL  missionsUiUpdating();  ONCE")]
     public GameObject gm;
+    public GameObject textPanel,npcToEnable;
     public bool startedQuest=false;
     public missionNames questName;
 
@@ -16,6 +17,7 @@ public class quest : MonoBehaviour
     public bool isQuestAdvancer = false;
     public GameObject parent;
     public int advCapInt = 0;
+    bool clickCheck;
 
     void Start ()
     {
@@ -23,6 +25,12 @@ public class quest : MonoBehaviour
     }
 	void Update ()
     {
+        if (Input.GetButton("interract"))
+        {
+            clickCheck = true;
+        }
+        else { clickCheck = false; }
+
         if (Input.GetKeyDown(KeyCode.V)) { missionsUiUpdating(); }
 
         if (isQuestAdvancer == true)
@@ -293,25 +301,76 @@ public class quest : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            if (isQuestAdvancer == false)
+            for (int y = 0; y < gm.GetComponent<gamemanagement>().npcChars.Length; y++)
+            {
+                gm.GetComponent<gamemanagement>().npcChars[y].SetActive(false);
+            }
+            switch (questName)
+            {
+                case missionNames.Gaia:
+                    npcToEnable = gm.GetComponent<gamemanagement>().npcChars[0]; Debug.Log("aaa");
+                    break;
+                case missionNames.Holy:
+                    npcToEnable = gm.GetComponent<gamemanagement>().npcChars[1]; Debug.Log("bbb");
+                    break;
+                case missionNames.PrimalWater:
+                    npcToEnable = gm.GetComponent<gamemanagement>().npcChars[2];
+                    break;
+                case missionNames.PrimalEarth:
+                    npcToEnable = gm.GetComponent<gamemanagement>().npcChars[3];
+                    break;
+                case missionNames.BlackIce:
+                    npcToEnable = gm.GetComponent<gamemanagement>().npcChars[4];
+                    break;
+                case missionNames.Thunderstorm:
+                    npcToEnable = gm.GetComponent<gamemanagement>().npcChars[5];
+                    break;
+                case missionNames.IceFire:
+                    npcToEnable = gm.GetComponent<gamemanagement>().npcChars[6];
+                    break;
+            }
+            npcToEnable.SetActive(true);
+
+            if (isQuestAdvancer == false && clickCheck==true)
             {
                 if (startedQuest == false) { missionsUi(); }
                 startedQuest = true;
                 missionsOperation();
+                textPanel.SetActive(true);
             }
             else if (isQuestAdvancer == true && startedQuest==false) { missionsOperation(); startedQuest = true; }
         }
     }
     void OnTriggerStay2D(Collider2D other)
     {
-        if (other.tag == "Player")
+        if(other.tag == "Player")
         {
+            if (isQuestAdvancer == false && clickCheck == true)
+            {
+                if (startedQuest == false) { missionsUi(); }
+                startedQuest = true;
+                missionsOperation();
+                textPanel.SetActive(true);
+            }
+            else if (isQuestAdvancer == true && startedQuest == false) { missionsOperation(); startedQuest = true; }
+        }
+
+        if (other.tag == "Player" && Input.GetButtonDown("interract"))
+        {
+            if (isQuestAdvancer == false && startedQuest==false)
+            {
+                textPanel.SetActive(true);
+            }
         }
     }
     void OnTriggerExit2D(Collider2D other)
     {
         if (other.tag == "Player")
         {
+            if (isQuestAdvancer == false)
+            {
+                textPanel.SetActive(false);
+            }
         }
     }
 }

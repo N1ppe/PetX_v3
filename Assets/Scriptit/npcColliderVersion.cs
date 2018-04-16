@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class npcColliderVersion : MonoBehaviour {
 
     public GameObject screenCanvas,player,huutomerkkiCanvas;
-    public bool seenThisNpc = false;
+    public bool disableHuutomerkki,seenThisNpc = false;
 
     public string NPC_name;
     [TextArea(1, 15)]
@@ -18,13 +18,16 @@ public class npcColliderVersion : MonoBehaviour {
     }
 	void Update ()
     {
-        if(seenThisNpc == true)
+        if (disableHuutomerkki == false)
         {
-            huutomerkkiCanvas.SetActive(false);
-        }
-        else
-        {
-            huutomerkkiCanvas.SetActive(true);
+            if (seenThisNpc == true)
+            {
+                huutomerkkiCanvas.SetActive(false);
+            }
+            else
+            {
+                huutomerkkiCanvas.SetActive(true);
+            }
         }
         nextTextButton();
 	}

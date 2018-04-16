@@ -34,6 +34,7 @@ public class gamemanagement : MonoBehaviour {
     public Items[] AllItems;
     public houses[] enterableBuildings;
     public tehtavat[] quests;
+    public GameObject[] npcChars;
     [Header("__________________________")]
     public Image[] questUiSprites;
     public Text[] questLogTexts,logItemCheckTexts;
