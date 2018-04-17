@@ -37,7 +37,7 @@ public class gamemanagement : MonoBehaviour {
     public GameObject[] npcChars;
     [Header("__________________________")]
     public Image[] questUiSprites;
-    public Text[] questLogTexts,logItemCheckTexts;
+    public Text[] questLogTexts;//,logItemCheckTexts;
     public GameObject evolvingCanvas;
     public Image petImg, petNextEvolveImg,animation;
     public Text[] reppuText;
@@ -278,6 +278,21 @@ public class gamemanagement : MonoBehaviour {
         }
 
 
+        //sample
+        if 
+            (
+            AllMonsters[11].allowEvolution == true &&
+            AllMonsters[12].allowEvolution == true
+            )
+        {
+            if (AllMonsters[11].agility >= 150 || AllMonsters[12].agility >= 150)
+            {
+                AllMonsters[13].allowEvolution = true;
+            }
+        }
+        //sample
+
+
         /*
         if (CurrentPetInt == 3) //Electricity
         {
@@ -287,7 +302,6 @@ public class gamemanagement : MonoBehaviour {
             }
         }
         */
-
     }
     IEnumerator evolutionUI()
     {

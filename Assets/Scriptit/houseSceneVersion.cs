@@ -47,7 +47,6 @@ public class houseSceneVersion : MonoBehaviour {
         if (other.gameObject.tag == "Player" && furnitureType == FurnitureType.bed)
         {
             player.GetComponent<playerButtonControl>().sleep.gameObject.SetActive(true);
-            Cursor.visible = true;
             player.GetComponent<playerButtonControl>().bedPosition = this.gameObject.transform.position;
         }
     }

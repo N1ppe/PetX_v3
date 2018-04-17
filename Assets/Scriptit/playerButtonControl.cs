@@ -73,7 +73,6 @@ public class playerButtonControl : MonoBehaviour {
                 quests.SetActive(false);
                 map.SetActive(false);
                 Time.timeScale = 1;
-                //Cursor.visible = true;
                 openWindow = openCanvas.evolutions;
             }
             else
@@ -96,7 +95,6 @@ public class playerButtonControl : MonoBehaviour {
                 quests.SetActive(false);
                 map.SetActive(false);
                 Time.timeScale = 1;
-                //Cursor.visible = true;
                 openWindow = openCanvas.reppu;
             }
             else
@@ -118,7 +116,6 @@ public class playerButtonControl : MonoBehaviour {
                 quests.SetActive(true);
                 map.SetActive(false);
                 Time.timeScale = 1;
-                //Cursor.visible = true;
                 openWindow = openCanvas.quests;
             }
             else
@@ -140,7 +137,6 @@ public class playerButtonControl : MonoBehaviour {
                 quests.SetActive(false);
                 map.SetActive(true);
                 Time.timeScale = 1;
-                //Cursor.visible = true;
                 openWindow = openCanvas.map;
             }
             else
@@ -314,9 +310,9 @@ public class playerButtonControl : MonoBehaviour {
         sleep.gameObject.SetActive(false);
         gm.GetComponent<gamemanagement>().day++;
         gm.GetComponent<gamemanagement>().timeOfDay = 10;
-        Cursor.visible = false; Time.timeScale = 1;
+        Time.timeScale = 1;
     }
-    public void exitSleepWindow() { sleep.gameObject.SetActive(false); Cursor.visible = false; Time.timeScale = 1; }
+    public void exitSleepWindow() { sleep.gameObject.SetActive(false); Time.timeScale = 1; }
 #region selectPetButtons
     public void m1() { gm.GetComponent<gamemanagement>().CurrentPetInt = 1; }
     public void m2() { gm.GetComponent<gamemanagement>().CurrentPetInt = 2; }

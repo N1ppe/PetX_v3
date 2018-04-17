@@ -25,7 +25,7 @@ public class enemyMovement : MonoBehaviour {
         if(EnemyState != state.dead && health>0)
         {
             distToPlayer = Vector3.Distance(this.transform.position, player.transform.position);
-            if (distToPlayer < 8 && distToPlayer > 2.55f) { EnemyState = state.following; }
+            if (distToPlayer < 8 && distToPlayer > 2.25f) { EnemyState = state.following; }
             else if (distToPlayer <= 2.5f) { EnemyState = state.attack; }
             else if(distToPlayer >= 10f) { EnemyState = state.idle; }
             if (health <= 0) { EnemyState = state.dead; }
@@ -53,14 +53,22 @@ public class enemyMovement : MonoBehaviour {
     }
     public void kickbacking()
     {
-        if (Facing.dirFacing == Facing.directionFacing.down) { this.GetComponent<Rigidbody2D>().AddForce(Vector2.down*70); }
-        if (Facing.dirFacing == Facing.directionFacing.downleft) { this.GetComponent<Rigidbody2D>().AddForce(new Vector2(-1,-1) * 70); }
-        if (Facing.dirFacing == Facing.directionFacing.left) { this.GetComponent<Rigidbody2D>().AddForce(Vector2.left * 70); }
-        if (Facing.dirFacing == Facing.directionFacing.upleft) { this.GetComponent<Rigidbody2D>().AddForce(new Vector2(-1, 1) * 70); }
-        if (Facing.dirFacing == Facing.directionFacing.up) { this.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 70); }
-        if (Facing.dirFacing == Facing.directionFacing.upright) { this.GetComponent<Rigidbody2D>().AddForce(new Vector2(1, 1) * 70); }
-        if (Facing.dirFacing == Facing.directionFacing.right) { this.GetComponent<Rigidbody2D>().AddForce(Vector2.right * 70); }
-        if (Facing.dirFacing == Facing.directionFacing.downright) { this.GetComponent<Rigidbody2D>().AddForce(new Vector2(1, -1) * 70); }
+        if (Facing.dirFacing == Facing.directionFacing.down) { this.GetComponent<Rigidbody2D>().AddForce(Vector2.down*500); }
+        if (Facing.dirFacing == Facing.directionFacing.downleft) { this.GetComponent<Rigidbody2D>().AddForce(new Vector2(-1,-1) * 500); }
+        if (Facing.dirFacing == Facing.directionFacing.left) { this.GetComponent<Rigidbody2D>().AddForce(Vector2.left * 500); }
+        if (Facing.dirFacing == Facing.directionFacing.upleft) { this.GetComponent<Rigidbody2D>().AddForce(new Vector2(-1, 1) * 500); }
+        if (Facing.dirFacing == Facing.directionFacing.up) { this.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 500); }
+        if (Facing.dirFacing == Facing.directionFacing.upright) { this.GetComponent<Rigidbody2D>().AddForce(new Vector2(1, 1) * 500); }
+        if (Facing.dirFacing == Facing.directionFacing.right) { this.GetComponent<Rigidbody2D>().AddForce(Vector2.right * 500); }
+        if (Facing.dirFacing == Facing.directionFacing.downright) { this.GetComponent<Rigidbody2D>().AddForce(new Vector2(1, -1) * 500); }
+        StartCoroutine(disablekickback());
+    }
+    IEnumerator disablekickback()
+    {
+        yield return new WaitForSeconds(0.2f);
+        this.GetComponent<Rigidbody2D>().Sleep();
+        yield return new WaitForSeconds(0.01f);
+        this.GetComponent<Rigidbody2D>().WakeUp();
     }
     IEnumerator randDelay()
     {
@@ -82,8 +90,14 @@ public class enemyMovement : MonoBehaviour {
         if (other.gameObject.tag == "PlayerAttack" )
         {
             health = health-1;
-            Debug.Log("qwertyuiop");
             kickbacking();
+        }
+    }
+    void OnCollisionStay2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            player.GetComponent<playerAttacking>().playerHealth = player.GetComponent<playerAttacking>().playerHealth-1;
         }
     }
 }

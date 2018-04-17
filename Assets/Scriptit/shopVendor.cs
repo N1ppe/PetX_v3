@@ -54,7 +54,6 @@ public class shopVendor : MonoBehaviour
     {
         shopCanvas.SetActive(false);
         sellCanvas.SetActive(false);
-        Cursor.visible = false;
         Time.timeScale = 1;
     }
     //sell screen
@@ -131,7 +130,7 @@ public class shopVendor : MonoBehaviour
                             {
                                 if (gm.GetComponent<gamemanagement>().playersBackpack[u].name == "" && gm.GetComponent<gamemanagement>().money >= buyButtons[p].cost && allowBuy == true)
                                 {
-                                    Debug.Log("BOUGHT A THING");
+                                    //Debug.Log("BOUGHT A THING");
                                     gm.GetComponent<gamemanagement>().reppuVisuals();
                                     //gm.GetComponent<gamemanagement>().playersBackpack[u] = gm.GetComponent<gamemanagement>().AllItems[y];
                                     gm.GetComponent<gamemanagement>().playersBackpack[u].name = gm.GetComponent<gamemanagement>().AllItems[y].name;
@@ -141,7 +140,6 @@ public class shopVendor : MonoBehaviour
                                     gm.GetComponent<gamemanagement>().playersBackpack[u].sellCost = gm.GetComponent<gamemanagement>().AllItems[y].sellCost;
                                     gm.GetComponent<gamemanagement>().playersBackpack[u].itemImage = gm.GetComponent<gamemanagement>().AllItems[y].itemImage;
 
-
                                     gm.GetComponent<gamemanagement>().money = gm.GetComponent<gamemanagement>().money - buyButtons[p].cost;
                                     allowBuy = false;
                                     return;
@@ -150,7 +148,6 @@ public class shopVendor : MonoBehaviour
                                 {
                                     Debug.Log("NOT ENOUGH MONEY");
                                     shopCanvas.SetActive(false);
-                                    Cursor.visible = false;
                                     Time.timeScale = 1;
                                     return;
                                 }
@@ -227,7 +224,6 @@ public class shopVendor : MonoBehaviour
             if (Input.GetButtonDown("interract"))
             {
                 shopCanvas.SetActive(true);
-                Cursor.visible = true;
                 Time.timeScale = 0;
             }
         }
