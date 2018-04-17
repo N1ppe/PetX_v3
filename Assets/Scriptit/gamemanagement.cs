@@ -169,6 +169,7 @@ public class gamemanagement : MonoBehaviour {
             if (Pet.wisdom == 100) { }
             if (Pet.luck == 1000) { }
         }
+
     }
     IEnumerator evolutionUI()
     {

@@ -11,20 +11,34 @@ public class petBehaviour : MonoBehaviour {
     public GameObject petPosition;
 
     public GameObject petSprite;
-    public GameObject petDark;
-    public GameObject petLight;
-    public GameObject petBaguette;
 
     public Animator animator;
+
+    public GameObject petDark;
     public Animator petDarkAnimator;
+
+    /*
+    public GameObject petLight;
+    public GameObject petHoly;
+
+    public GameObject petBaguette;
+
+
     public Animator petLightAnimator;
+    public Animator petHolyAnimator;
+
     public Animator petBaguetteAnimator;
+    */
+
+    public gamemanagement gm;
 
     void Start ()
     {
+        
         petSprite = petDark;
         animator = petDarkAnimator;
         petDark.SetActive(true);
+        
     }
 
     void Update ()
@@ -32,6 +46,8 @@ public class petBehaviour : MonoBehaviour {
         //distToPlayer = Vector3.Distance(this.transform.position, player.transform.position);
         //moveToPlayer();
         //hideWhenInAttack();
+
+        /*
         if (Input.GetKeyDown(KeyCode.E))
         {
             petSprite = petDark;
@@ -46,6 +62,8 @@ public class petBehaviour : MonoBehaviour {
             petDark.SetActive(false);
             petLight.SetActive(true);
         }
+
+        */
 
         spritePos();
     }
@@ -97,6 +115,8 @@ public class petBehaviour : MonoBehaviour {
 
         if (Input.GetButton("Horizontal") || Input.GetButton("Vertical"))
         {
+            gm.GetComponent<gamemanagement>().Pet.petsAnimator.SetBool("walk", true);
+
             if (lastInputX > 0)
             {
                 animator.SetFloat("LastMoveX", 1f);
@@ -122,6 +142,10 @@ public class petBehaviour : MonoBehaviour {
             {
                 animator.SetFloat("LastMoveY", 0f);
             }
+        }
+        else
+        {
+            gm.GetComponent<gamemanagement>().Pet.petsAnimator.SetBool("walk", false);
         }
         /*
         if (Input.GetButton("attack"))

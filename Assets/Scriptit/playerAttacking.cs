@@ -26,6 +26,7 @@ public class playerAttacking : MonoBehaviour {
     }
 	void Update ()
     {
+        /*
         if (Input.GetKeyDown(KeyCode.E))
         {
             attackSprt = attackSpriteDark;
@@ -34,6 +35,7 @@ public class playerAttacking : MonoBehaviour {
         {
             attackSprt = attackSpriteLight;
         }
+        */
 
         if(gm.GetComponent<gamemanagement>().Pet == gm.GetComponent<gamemanagement>().AllMonsters[0])
         {
@@ -77,8 +79,9 @@ public class playerAttacking : MonoBehaviour {
             }
             else
             {
-                if (gm.GetComponent<Animator>()!=null)
-                { gm.GetComponent<gamemanagement>().Pet.petsAnimator.SetBool("attack", false); }
+                //if (gm.GetComponent<Animator>()!=null)
+                //{ gm.GetComponent<gamemanagement>().Pet.petsAnimator.SetBool("attack", false); }
+                gm.GetComponent<gamemanagement>().Pet.petsAnimator.SetBool("attack", false);
             }
         }
     }

@@ -72,7 +72,7 @@ public class playerButtonControl : MonoBehaviour {
                 reppu.SetActive(false);
                 quests.SetActive(false);
                 map.SetActive(false);
-                Time.timeScale = 0;
+                Time.timeScale = 1;
                 //Cursor.visible = true;
                 openWindow = openCanvas.evolutions;
             }
@@ -95,7 +95,7 @@ public class playerButtonControl : MonoBehaviour {
                 reppu.SetActive(true);
                 quests.SetActive(false);
                 map.SetActive(false);
-                Time.timeScale = 0;
+                Time.timeScale = 1;
                 //Cursor.visible = true;
                 openWindow = openCanvas.reppu;
             }
@@ -170,7 +170,7 @@ public class playerButtonControl : MonoBehaviour {
                 reppu.SetActive(false);
                 quests.SetActive(false);
                 map.SetActive(false);
-                Time.timeScale = 0;
+                Time.timeScale = 1;
                 openWindow = openCanvas.evolutions;
             }
         }
@@ -188,7 +188,7 @@ public class playerButtonControl : MonoBehaviour {
                 reppu.SetActive(true);
                 quests.SetActive(false);
                 map.SetActive(false);
-                Time.timeScale = 0;
+                Time.timeScale = 1;
                 openWindow = openCanvas.reppu;
             }
         }
@@ -206,7 +206,7 @@ public class playerButtonControl : MonoBehaviour {
                 reppu.SetActive(false);
                 quests.SetActive(true);
                 map.SetActive(false);
-                Time.timeScale = 0;
+                Time.timeScale = 1;
                 openWindow = openCanvas.quests;
             }
         }
@@ -263,7 +263,7 @@ public class playerButtonControl : MonoBehaviour {
             }         
             for (int g = 0; g < gm.GetComponent<gamemanagement>().AllMonsters.Length; g++)
             {
-                if (EventSystem.current.currentSelectedGameObject.GetComponentInChildren<Text>().text == gm.GetComponent<gamemanagement>().AllMonsters[g].name && gm.GetComponent<gamemanagement>().AllMonsters[g].allowEvolution==true)
+                if (EventSystem.current.currentSelectedGameObject.name == gm.GetComponent<gamemanagement>().AllMonsters[g].name && gm.GetComponent<gamemanagement>().AllMonsters[g].allowEvolution==true)
                 {
                     Debug.Log(EventSystem.current.currentSelectedGameObject.name);
                     //gm.GetComponent<gamemanagement>().Pet = gm.GetComponent<gamemanagement>().AllMonsters[g]; //this should work, but it doesnt workaround under
