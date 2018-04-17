@@ -25,6 +25,7 @@ public class GymMinigameAndDispencer : MonoBehaviour
             {
                 if (gm.GetComponent<gamemanagement>().timeOfDay < 22)
                 {
+                    npcText.enabled = true;
                     npcText.text = "Train a little !";
 
                     if(Input.GetButtonDown("interract") && gm.GetComponent<gamemanagement>().money>=5)
@@ -87,6 +88,7 @@ public class GymMinigameAndDispencer : MonoBehaviour
         if (other.tag == "Player")
         {
             inRange = false;
+            npcText.enabled = false;
         }
     }
 }

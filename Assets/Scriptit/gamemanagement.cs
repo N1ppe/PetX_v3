@@ -161,14 +161,132 @@ public class gamemanagement : MonoBehaviour {
             else if (AllMonsters[r].allowEvolution == false) { AllMonsters[r].inMonsterCatalog.sprite = lukkoImg; }
         }
 
-
-        if (CurrentPetInt == 3)
+        //Light T2 pets
+        if (CurrentPetInt == 2) //Grass
         {
-            if (Pet.strength == 100) { AllMonsters[3].allowEvolution = true; }
-            if (Pet.agility == 100) { }
-            if (Pet.wisdom == 100) { }
-            if (Pet.luck == 1000) { }
+            //if (Pet.strength == 0 && Pet.agility == 0 && Pet.wisdom == 100 && Pet.luck == 0)
+            if (Pet.wisdom >= 100)
+            {
+                AllMonsters[3].allowEvolution = true;
+            }
         }
+        if (CurrentPetInt == 2) //LightFire
+        {
+            if (Pet.strength >= 50 && Pet.wisdom >= 50)
+            {
+                AllMonsters[4].allowEvolution = true;
+            }
+        }
+        if (CurrentPetInt == 2) //Water
+        {
+            if (Pet.agility >= 100)
+            {
+                AllMonsters[5].allowEvolution = true;
+            }
+        }
+        if (CurrentPetInt == 2) //Air
+        {
+            if (Pet.agility >= 50 && Pet.luck >= 50)
+            {
+                AllMonsters[6].allowEvolution = true;
+            }
+        }
+
+        //Light T3 pets
+        if (CurrentPetInt == 6) //Pure Water
+        {
+            if (Pet.agility >= 300)
+            {
+                AllMonsters[13].allowEvolution = true;
+            }
+        }
+        if (CurrentPetInt == 5 || CurrentPetInt == 7) //Holy
+        {
+            if (Pet.wisdom >= 300)
+            {
+                AllMonsters[14].allowEvolution = true;
+            }
+        }
+
+        //Dark T2 pets
+        if (CurrentPetInt == 3) //Earth
+        {
+            if (Pet.strength >= 100)
+            {
+                AllMonsters[7].allowEvolution = true;
+            }
+        }
+        if (CurrentPetInt == 3) //DarkFire
+        {
+            if (Pet.strength >= 50 && Pet.wisdom >= 50)
+            {
+                AllMonsters[8].allowEvolution = true;
+            }
+        }
+        if (CurrentPetInt == 3) //Ice
+        {
+            if (Pet.agility >= 50 && Pet.wisdom >= 50)
+            {
+                AllMonsters[9].allowEvolution = true;
+            }
+        }
+        if (CurrentPetInt == 3) //Electricity
+        {
+            if (Pet.luck >= 100)
+            {
+                AllMonsters[10].allowEvolution = true;
+            }
+        }
+
+        //Dark T3 pets
+        if (CurrentPetInt == 10) //Black Ice
+        {
+            if (Pet.agility >= 150 && Pet.wisdom >= 150)
+            {
+                AllMonsters[15].allowEvolution = true;
+            }
+        }
+        if (CurrentPetInt ==  8) //Primal Earth
+        {
+            if (Pet.strength >= 300)
+            {
+                AllMonsters[16].allowEvolution = true;
+            }
+        }
+        if (CurrentPetInt == 9 || CurrentPetInt == 10) //IceFire
+        {
+            if (Pet.strength >= 150 && Pet.wisdom >= 150)
+            {
+                AllMonsters[17].allowEvolution = true;
+            }
+        }
+
+        //Hybrid T3 pets
+        if (CurrentPetInt == 4 || CurrentPetInt == 6 || CurrentPetInt == 8) //Gaia
+        {
+            if (Pet.strength >= 100 && Pet.agility >= 100 && Pet.wisdom >= 100)
+            {
+                AllMonsters[11].allowEvolution = true;
+            }
+        }
+        if (CurrentPetInt == 6 || CurrentPetInt == 7 || CurrentPetInt == 11) //Thunderstorm
+        {
+            if (Pet.agility >= 150 && Pet.luck >= 150)
+            {
+                AllMonsters[12].allowEvolution = true;
+            }
+        }
+
+
+        /*
+        if (CurrentPetInt == 3) //Electricity
+        {
+            if (Pet.strength == 0 && Pet.agility == 0 && Pet.wisdom == 0 && Pet.luck == 100)
+            {
+                AllMonsters[10].allowEvolution = true;
+            }
+        }
+        */
 
     }
     IEnumerator evolutionUI()
