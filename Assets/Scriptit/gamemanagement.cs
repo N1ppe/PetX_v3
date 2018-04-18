@@ -202,12 +202,14 @@ public class gamemanagement : MonoBehaviour {
         }
         if (CurrentPetInt == 5 || CurrentPetInt == 7) //Holy
         {
-            if (Pet.wisdom >= 300)
+            if(AllMonsters[4].allowEvolution == true && AllMonsters[6].allowEvolution == true)
             {
-                AllMonsters[14].allowEvolution = true;
+                if (Pet.wisdom >= 300)
+                {
+                    AllMonsters[14].allowEvolution = true;
+                }
             }
         }
-
         //Dark T2 pets
         if (CurrentPetInt == 3) //Earth
         {
@@ -255,53 +257,60 @@ public class gamemanagement : MonoBehaviour {
         }
         if (CurrentPetInt == 9 || CurrentPetInt == 10) //IceFire
         {
-            if (Pet.strength >= 150 && Pet.wisdom >= 150)
+            if (AllMonsters[8].allowEvolution == true && AllMonsters[9].allowEvolution == true)
             {
-                AllMonsters[17].allowEvolution = true;
+                if (Pet.strength >= 150 && Pet.wisdom >= 150)
+                {
+                    AllMonsters[17].allowEvolution = true;
+                }
             }
         }
 
         //Hybrid T3 pets
         if (CurrentPetInt == 4 || CurrentPetInt == 6 || CurrentPetInt == 8) //Gaia
         {
-            if (Pet.strength >= 100 && Pet.agility >= 100 && Pet.wisdom >= 100)
+            if(AllMonsters[3].allowEvolution == true && AllMonsters[5].allowEvolution == true && AllMonsters[7].allowEvolution == true)
             {
-                AllMonsters[11].allowEvolution = true;
+                if (Pet.strength >= 100 && Pet.agility >= 100 && Pet.wisdom >= 100)
+                {
+                    AllMonsters[11].allowEvolution = true;
+                }
             }
         }
         if (CurrentPetInt == 6 || CurrentPetInt == 7 || CurrentPetInt == 11) //Thunderstorm
         {
-            if (Pet.agility >= 150 && Pet.luck >= 150)
+            if (AllMonsters[5].allowEvolution == true && AllMonsters[6].allowEvolution == true && AllMonsters[10].allowEvolution == true)
             {
-                AllMonsters[12].allowEvolution = true;
+                if (Pet.agility >= 150 && Pet.luck >= 150)
+                {
+                    AllMonsters[12].allowEvolution = true;
+                }
             }
         }
-
-
-        //sample
-        if 
-            (
-            AllMonsters[11].allowEvolution == true &&
-            AllMonsters[12].allowEvolution == true
-            )
+        //T4 pets
+        if (AllMonsters[1].allowEvolution == true && AllMonsters[3].allowEvolution == true &&AllMonsters[4].allowEvolution == true && AllMonsters[5].allowEvolution == true &&
+            AllMonsters[6].allowEvolution == true && AllMonsters[13].allowEvolution == true && AllMonsters[14].allowEvolution == true && AllMonsters[11].allowEvolution == true) //Cosmic
         {
-            if (AllMonsters[11].agility >= 150 || AllMonsters[12].agility >= 150)
+            if(CurrentPetInt == 2 || CurrentPetInt == 4 || CurrentPetInt == 5 || CurrentPetInt == 6 || CurrentPetInt == 7 || CurrentPetInt == 14 || CurrentPetInt == 15 || CurrentPetInt == 12)
             {
-                AllMonsters[13].allowEvolution = true;
+                if (Pet.agility >= 999 && Pet.luck >= 999 && Pet.strength >= 999 && Pet.wisdom >= 999)
+                {
+                    AllMonsters[18].allowEvolution = true;
+                }
             }
         }
-        //sample
-
-
-        /*
-        if (CurrentPetInt == 3) //Electricity
+        if (AllMonsters[2].allowEvolution == true && AllMonsters[7].allowEvolution == true && AllMonsters[8].allowEvolution == true && AllMonsters[9].allowEvolution == true &&
+            AllMonsters[10].allowEvolution == true && AllMonsters[15].allowEvolution == true && AllMonsters[16].allowEvolution == true && AllMonsters[17].allowEvolution == true && AllMonsters[12].allowEvolution == true) //Abyss
         {
-            if (Pet.strength == 0 && Pet.agility == 0 && Pet.wisdom == 0 && Pet.luck == 100)
+            if (CurrentPetInt == 3 || CurrentPetInt == 8 || CurrentPetInt == 9 || CurrentPetInt == 10 || CurrentPetInt == 11 || CurrentPetInt == 16 || CurrentPetInt == 17 || CurrentPetInt == 18 || CurrentPetInt == 13)
             {
-                AllMonsters[10].allowEvolution = true;
+                if (Pet.agility >= 999 && Pet.luck >= 999 && Pet.strength >= 999 && Pet.wisdom >= 999)
+                {
+                    AllMonsters[19].allowEvolution = true;
+                }
             }
         }
-        */
+
     }
     IEnumerator evolutionUI()
     {
@@ -325,7 +334,7 @@ public class Monsters
 {
     public string name, description;
     public int strength, agility, wisdom , luck;    //upgradable stats
-    public int health, hunger, happyness, cleaniness;    //beauty
+    public int health, hunger, happiness, cleaniness;    //beauty
     public bool allowEvolution = false;
     public Sprite petVisual;
     public Image inMonsterCatalog;
