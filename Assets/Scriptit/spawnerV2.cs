@@ -5,18 +5,22 @@ using UnityEngine;
 public class spawnerV2 : MonoBehaviour
 {
     public bool allowmove = false;
-    public Vector3 startingLoc;
     public enemiesToSpawnFromPortal[] EnemiesToSpawnv2;
+    public Vector3 PortalLocation;
 
     void Start()
     {
-        startingLoc = this.gameObject.transform.position;
         InvokeRepeating("deadMobTestingLoop", 1, 2);
         StartCoroutine(delayDisable());
+        EnemiesToSpawnv2[0].posToSWalkTo = this.gameObject.transform.position + EnemiesToSpawnv2[0].enemyOffset;
+        EnemiesToSpawnv2[1].posToSWalkTo = this.gameObject.transform.position + EnemiesToSpawnv2[1].enemyOffset;
+        EnemiesToSpawnv2[2].posToSWalkTo = this.gameObject.transform.position + EnemiesToSpawnv2[2].enemyOffset;
+        EnemiesToSpawnv2[3].posToSWalkTo = this.gameObject.transform.position + EnemiesToSpawnv2[3].enemyOffset;
+        EnemiesToSpawnv2[4].posToSWalkTo = this.gameObject.transform.position + EnemiesToSpawnv2[4].enemyOffset;
     }
     void Update()
     {
-        if(allowmove == false && EnemiesToSpawnv2[0].moveonceTrue == true) { StartCoroutine(delayDisable()); }
+        if (allowmove == false && EnemiesToSpawnv2[0].moveonceTrue == true) { StartCoroutine(delayDisable()); }
         if (allowmove == false && EnemiesToSpawnv2[1].moveonceTrue == true) { StartCoroutine(delayDisable()); }
         if (allowmove == false && EnemiesToSpawnv2[2].moveonceTrue == true) { StartCoroutine(delayDisable()); }
         if (allowmove == false && EnemiesToSpawnv2[3].moveonceTrue == true) { StartCoroutine(delayDisable()); }
@@ -64,7 +68,7 @@ public class spawnerV2 : MonoBehaviour
         {
             if (EnemiesToSpawnv2[u].enemyInWorld == null)
             {
-                EnemiesToSpawnv2[u].enemyInWorld = Instantiate(EnemiesToSpawnv2[u].enemyToSpawn, this.gameObject.transform.position, Quaternion.identity);
+                EnemiesToSpawnv2[u].enemyInWorld = Instantiate(EnemiesToSpawnv2[u].enemyToSpawn, this.gameObject.transform.position + EnemiesToSpawnv2[u].enemySpawnPos, Quaternion.identity);
                 //EnemiesToSpawn[u].mobAlive = true;
                 EnemiesToSpawnv2[u].moveonceTrue = true;
             }
@@ -76,7 +80,7 @@ public class spawnerV2 : MonoBehaviour
         {
             if (EnemiesToSpawnv2[u].enemyInWorld != null)
             {
-                EnemiesToSpawnv2[u].enemyInWorld.gameObject.transform.position = Vector2.MoveTowards(this.gameObject.transform.position, EnemiesToSpawnv2[u].posToSWalkTo, 2 * Time.deltaTime);
+                EnemiesToSpawnv2[u].enemyInWorld.gameObject.transform.position = Vector3.MoveTowards(this.gameObject.transform.position, EnemiesToSpawnv2[u].posToSWalkTo, 2 * Time.deltaTime);
                 //StartCoroutine(delaywalkdisable());
             }
         }
@@ -94,5 +98,8 @@ public class enemiesToSpawnFromPortal
 {
     public bool moveonceTrue=true;
     public GameObject enemyToSpawn, enemyInWorld;
+
     public Vector3 posToSWalkTo;
+    public Vector3 enemyOffset;
+    public Vector3 enemySpawnPos;
 }
