@@ -333,6 +333,7 @@ public class gamemanagement : MonoBehaviour {
 public class Monsters
 {
     public string name, description;
+    public elements petElement;
     public int strength, agility, wisdom , luck;    //upgradable stats
     public int health, hunger, happiness, cleaniness;    //beauty
     public bool allowEvolution = false;
@@ -382,5 +383,9 @@ public class tehtavatSubItem
 {
     public string name;
     public int itemAmount, amountNeeded;
-
+}
+[System.Serializable]
+public enum elements
+{
+    ZERO,light,dark,grass,lightfire,water,air,earth,darkFire,ice,electricity,gaia,thunderstorm,pureWater,holy,blackIce,primalEarth,iceFire,cosmic,abyss
 }

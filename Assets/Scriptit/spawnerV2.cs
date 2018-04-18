@@ -89,6 +89,16 @@ public class spawnerV2 : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         allowmove = true;
+
+        yield return new WaitForSeconds(1f);
+        for (int u = 0; u < EnemiesToSpawnv2.Length; u++)
+        {
+            if (EnemiesToSpawnv2[u].enemyInWorld != null)
+            {
+                EnemiesToSpawnv2[u].enemyInWorld.GetComponent<Collider2D>().enabled = true;
+            }
+        }
+
         yield return new WaitForSeconds(5f);
         allowmove = false;
     }

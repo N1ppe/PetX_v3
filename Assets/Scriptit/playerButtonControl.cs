@@ -9,13 +9,14 @@ public class playerButtonControl : MonoBehaviour {
     public gamemanagement gm;
     [Range(0,4)]
     public int buttonInt=0;
-    public GameObject evolves,reppu,quests,map,sleep;
+    public GameObject evolves,reppu,quests,map,sleep,enemyportal;
     public Vector3 bedPosition;
     public openCanvas openWindow;
     public GameObject pet;
     [Range(0,11)]
     public int waypointIntToMoveTo;
     public mapWaypoints[] waypoints;
+    public GameObject[] enemyPortals;
     Animator animator;
 
     public EventSystem eventSystem;
@@ -31,6 +32,17 @@ public class playerButtonControl : MonoBehaviour {
         playerOtherButtons();
         escaping();
         bb();
+    }
+    public void destroyRightEnemySpawner()
+    {
+        for(int g = 0; g < enemyPortals.Length;g++)
+        {
+            if (gm.Pet.petElement == enemyPortals[g].GetComponent<destroySpawner>().portalsElement) { Destroy(enemyPortals[g]); }
+        }
+    }
+    public void disableSpawnerUi()
+    {
+        enemyportal.active = false;
     }
     public void pb()
     {
@@ -301,7 +313,6 @@ public class playerButtonControl : MonoBehaviour {
         }
         waypointIntToMoveTo = 0;
     }
-
     public void sleepButton()
     {
         this.gameObject.transform.position = bedPosition;
