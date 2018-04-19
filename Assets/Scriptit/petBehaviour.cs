@@ -14,8 +14,8 @@ public class petBehaviour : MonoBehaviour {
 
     public Animator animator;
 
-    public GameObject petDark;
-    public Animator petDarkAnimator;
+    public GameObject petStarter;
+    public Animator petStarterAnimator;
 
     /*
     public GameObject petLight;
@@ -35,9 +35,9 @@ public class petBehaviour : MonoBehaviour {
     void Start ()
     {
         
-        petSprite = petDark;
-        animator = petDarkAnimator;
-        petDark.SetActive(true);
+        petSprite = petStarter;
+        animator = petStarterAnimator;
+        petStarter.SetActive(true);
         
     }
 

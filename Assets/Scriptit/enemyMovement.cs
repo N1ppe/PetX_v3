@@ -21,7 +21,7 @@ public class enemyMovement : MonoBehaviour {
     }
 	void Update ()
     {
-        if (distToPlayer < 10) { animationChanger(); }
+        //if (distToPlayer < 10) { animationChanger(); }
         if(EnemyState != state.dead && health>0)
         {
             distToPlayer = Vector3.Distance(this.transform.position, player.transform.position);
@@ -44,6 +44,7 @@ public class enemyMovement : MonoBehaviour {
             StartCoroutine(deathStateOperation());
         }
     }
+    /*
     public void animationChanger()
     {
         if (EnemyState == state.idle) { enemysAnimator.SetInteger("enemyStateInt", 0); }
@@ -51,6 +52,7 @@ public class enemyMovement : MonoBehaviour {
         if (EnemyState == state.attack) { enemysAnimator.SetInteger("enemyStateInt", 2); }
         if (EnemyState == state.dead) { enemysAnimator.SetInteger("enemyStateInt", 3); }
     }
+    */
     public void kickbacking()
     {
         if (Facing.dirFacing == Facing.directionFacing.down) { this.GetComponent<Rigidbody2D>().AddForce(Vector2.down*500); }
