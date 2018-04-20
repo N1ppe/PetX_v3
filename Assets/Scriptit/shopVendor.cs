@@ -57,7 +57,7 @@ public class shopVendor : MonoBehaviour
         Time.timeScale = 1;
     }
     //sell screen
-    public void sell()//    THIS THING HERE IS SO FUCKED UP, GOD DAIAMN , DELETES ALL IF MANY SAME ITEMS , update: if you remove 1 item all duplicated are deleted too
+    public void sell()
     {
         sellSCreenImages();
 
@@ -91,8 +91,6 @@ public class shopVendor : MonoBehaviour
             }
             //Debug.Log("loop times "+y);
         }
-
-
         sellSCreenImages();
     }
     public void toSellScreen()
@@ -193,16 +191,16 @@ public class shopVendor : MonoBehaviour
     {
         if (EventSystem.current.currentSelectedGameObject != null)
         {
-            if (EventSystem.current.currentSelectedGameObject.name == "s1") { itemToSellINT = 0; shopitemnametemp = sellButtons[0].itemNameHolder.text; }
-            if (EventSystem.current.currentSelectedGameObject.name == "s2") { itemToSellINT = 1; shopitemnametemp = sellButtons[1].itemNameHolder.text; }
-            if (EventSystem.current.currentSelectedGameObject.name == "s3") { itemToSellINT = 2; shopitemnametemp = sellButtons[2].itemNameHolder.text; }
-            if (EventSystem.current.currentSelectedGameObject.name == "s4") { itemToSellINT = 3; shopitemnametemp = sellButtons[3].itemNameHolder.text; }
-            if (EventSystem.current.currentSelectedGameObject.name == "s5") { itemToSellINT = 4; shopitemnametemp = sellButtons[4].itemNameHolder.text; }
-            if (EventSystem.current.currentSelectedGameObject.name == "s6") { itemToSellINT = 5; shopitemnametemp = sellButtons[5].itemNameHolder.text; }
-            if (EventSystem.current.currentSelectedGameObject.name == "s7") { itemToSellINT = 6; shopitemnametemp = sellButtons[6].itemNameHolder.text; }
-            if (EventSystem.current.currentSelectedGameObject.name == "s8") { itemToSellINT = 7; shopitemnametemp = sellButtons[7].itemNameHolder.text; }
-            if (EventSystem.current.currentSelectedGameObject.name == "s9") { itemToSellINT = 8; shopitemnametemp = sellButtons[8].itemNameHolder.text; }
-            if (EventSystem.current.currentSelectedGameObject.name == "s10") { itemToSellINT = 9; shopitemnametemp = sellButtons[9].itemNameHolder.text; }
+            if (EventSystem.current.currentSelectedGameObject.name == "sell1") { itemToSellINT = 0; shopitemnametemp = sellButtons[0].itemNameHolder.text; }
+            if (EventSystem.current.currentSelectedGameObject.name == "sell2") { itemToSellINT = 1; shopitemnametemp = sellButtons[1].itemNameHolder.text; }
+            if (EventSystem.current.currentSelectedGameObject.name == "sell3") { itemToSellINT = 2; shopitemnametemp = sellButtons[2].itemNameHolder.text; }
+            if (EventSystem.current.currentSelectedGameObject.name == "sell4") { itemToSellINT = 3; shopitemnametemp = sellButtons[3].itemNameHolder.text; }
+            if (EventSystem.current.currentSelectedGameObject.name == "sell5") { itemToSellINT = 4; shopitemnametemp = sellButtons[4].itemNameHolder.text; }
+            if (EventSystem.current.currentSelectedGameObject.name == "sell6") { itemToSellINT = 5; shopitemnametemp = sellButtons[5].itemNameHolder.text; }
+            if (EventSystem.current.currentSelectedGameObject.name == "sell7") { itemToSellINT = 6; shopitemnametemp = sellButtons[6].itemNameHolder.text; }
+            if (EventSystem.current.currentSelectedGameObject.name == "sell8") { itemToSellINT = 7; shopitemnametemp = sellButtons[7].itemNameHolder.text; }
+            if (EventSystem.current.currentSelectedGameObject.name == "sell9") { itemToSellINT = 8; shopitemnametemp = sellButtons[8].itemNameHolder.text; }
+            if (EventSystem.current.currentSelectedGameObject.name == "sell10") { itemToSellINT = 9; shopitemnametemp = sellButtons[9].itemNameHolder.text; }
 
             for (int g = 0; g < 10; g++)
             {

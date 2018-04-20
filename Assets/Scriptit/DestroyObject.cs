@@ -16,11 +16,17 @@ public class DestroyObject : MonoBehaviour {
 		
 	}
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (QuestScript.GetComponent<quest>().startedQuest == true)
         {
-            Destroy(this.gameObject);
+            StartCoroutine(destroyDelay());
         }
     }
+    IEnumerator destroyDelay()
+    {
+        yield return new WaitForSeconds(0.5f);
+        Destroy(this.gameObject);
+    }
 }
+

@@ -31,8 +31,6 @@ public class quest : MonoBehaviour
         }
         else { clickCheck = false; }
 
-        if (Input.GetKeyDown(KeyCode.V)) { missionsUiUpdating(); }
-
         if (isQuestAdvancer == true)
         {
             //missionAndvancement = parent.GetComponent<quest>().missionAndvancement;
@@ -171,9 +169,13 @@ public class quest : MonoBehaviour
                 {
                     for (int et = 0; et < gm.GetComponent<gamemanagement>().playersBackpack.Length; et++)
                     {
-                        if(gm.GetComponent<gamemanagement>().playersBackpack[et].name == "Goblet of water")
+                        if (gm.GetComponent<gamemanagement>().playersBackpack[et].name == "Goblet of water")
                         {
-                            gm.GetComponent<gamemanagement>().playersBackpack[et] = null;
+                            gm.GetComponent<gamemanagement>().playersBackpack[et].name = "";
+                            gm.GetComponent<gamemanagement>().playersBackpack[et].description = "";
+                            gm.GetComponent<gamemanagement>().playersBackpack[et].itemPropertyInt = 0;
+                            gm.GetComponent<gamemanagement>().playersBackpack[et].sellCost = 0;
+                            gm.GetComponent<gamemanagement>().playersBackpack[et].itemImage = null;
                             missionsUiUpdating();
                         }
                     }
@@ -235,7 +237,7 @@ public class quest : MonoBehaviour
                     }
                     missionsUiUpdating();
                 }
-                if (advCapInt == 2)
+                if (parent.GetComponent<quest>().missionAdvancement == advCapInt - 1 && advCapInt == 2)
                 {
                     for (int er = 0; er < gm.GetComponent<gamemanagement>().playersBackpack.Length; er++)
                     {
@@ -370,10 +372,10 @@ public class quest : MonoBehaviour
             switch (questName)
             {
                 case missionNames.Gaia:
-                    npcToEnable = gm.GetComponent<gamemanagement>().npcChars[0]; Debug.Log("aaa");
+                    npcToEnable = gm.GetComponent<gamemanagement>().npcChars[0];
                     break;
                 case missionNames.Holy:
-                    npcToEnable = gm.GetComponent<gamemanagement>().npcChars[1]; Debug.Log("bbb");
+                    npcToEnable = gm.GetComponent<gamemanagement>().npcChars[1];
                     break;
                 case missionNames.PrimalWater:
                     npcToEnable = gm.GetComponent<gamemanagement>().npcChars[2];
@@ -400,7 +402,8 @@ public class quest : MonoBehaviour
                 missionsOperation();
                 textPanel.SetActive(true);
             }
-            else if (isQuestAdvancer == true && startedQuest==false) { missionsOperation(); startedQuest = true; }
+            else if (isQuestAdvancer == true && startedQuest==true) { missionsOperation(); startedQuest = true; }
+            else if (isQuestAdvancer == true && startedQuest == false) { return; }
         }
     }
     void OnTriggerStay2D(Collider2D other)

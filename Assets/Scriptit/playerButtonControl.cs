@@ -262,13 +262,15 @@ public class playerButtonControl : MonoBehaviour {
     {
         if (EventSystem.current.currentSelectedGameObject != null)
         {
+            /*
             for (int u = 0; u < gm.GetComponent<gamemanagement>().AllMonsters.Length; u++)
             {
                 if(gm.GetComponent<gamemanagement>().AllMonsters[u].petInWorldPrefab != null)
                 {
                     gm.GetComponent<gamemanagement>().AllMonsters[u].petInWorldPrefab.SetActive(false);//disables all
                 }
-            }         
+            }    
+            */
             for (int g = 0; g < gm.GetComponent<gamemanagement>().AllMonsters.Length; g++)
             {
                 if (EventSystem.current.currentSelectedGameObject.name == gm.GetComponent<gamemanagement>().AllMonsters[g].name && gm.GetComponent<gamemanagement>().AllMonsters[g].allowEvolution==true)
@@ -281,6 +283,15 @@ public class playerButtonControl : MonoBehaviour {
                     gm.GetComponent<gamemanagement>().AllMonsters[g].petsAttack.SetActive(true);
                     gm.GetComponent<gamemanagement>().AllMonsters[g].petsAttack.SetActive(false);
                     pet.GetComponent<petBehaviour>().animator = gm.GetComponent<gamemanagement>().AllMonsters[g].petsAnimator;
+
+                    for (int u = 0; u < gm.GetComponent<gamemanagement>().AllMonsters.Length; u++)
+                    {
+                        if (gm.GetComponent<gamemanagement>().AllMonsters[u].petInWorldPrefab != null)
+                        {
+                            if (gm.GetComponent<gamemanagement>().AllMonsters[u] != gm.GetComponent<gamemanagement>().AllMonsters[g])
+                            { gm.GetComponent<gamemanagement>().AllMonsters[u].petInWorldPrefab.SetActive(false); }
+                        }
+                    }
                 }
             }
             eventSystem.SetSelectedGameObject(null);
