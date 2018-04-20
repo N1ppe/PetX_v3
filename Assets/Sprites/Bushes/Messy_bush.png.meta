@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 84df031d369411d488e6d4af7d61acd4
-timeCreated: 1521621715
+timeCreated: 1524267447
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName: {}
@@ -70,7 +70,46 @@ TextureImporter:
     serializedVersion: 2
     sprites: []
     outline: []
-    physicsShape: []
+    physicsShape:
+    - - {x: 40, y: -29}
+      - {x: 43, y: -25}
+      - {x: 43, y: -16}
+      - {x: 42, y: -12}
+      - {x: 40, y: -8}
+      - {x: 41, y: -2}
+      - {x: 47, y: 4}
+      - {x: 47, y: 10}
+      - {x: 46, y: 12}
+      - {x: 43, y: 14}
+      - {x: 37, y: 16}
+      - {x: 35, y: 12}
+      - {x: 35, y: 9}
+      - {x: 33, y: 12}
+      - {x: 30, y: 29}
+      - {x: 23, y: 35}
+      - {x: 15, y: 35}
+      - {x: 11, y: 34}
+      - {x: 9, y: 31}
+      - {x: 4, y: 24}
+      - {x: 3, y: 18}
+      - {x: -8, y: 29}
+      - {x: -15, y: 25}
+      - {x: -15, y: 16}
+      - {x: -23, y: 20}
+      - {x: -27, y: 20}
+      - {x: -29, y: 18}
+      - {x: -34, y: 11}
+      - {x: -35, y: 2}
+      - {x: -35, y: -19}
+      - {x: -32, y: -21}
+      - {x: -31, y: -28}
+      - {x: -25, y: -35}
+      - {x: -17, y: -41}
+      - {x: -9, y: -42}
+      - {x: 7, y: -42}
+      - {x: 12, y: -41}
+      - {x: 23, y: -38}
+      - {x: 38, y: -31}
   spritePackingTag: 
   userData: 
   assetBundleName: 
