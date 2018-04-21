@@ -17,8 +17,11 @@ public class playerButtonControl : MonoBehaviour {
     public int waypointIntToMoveTo;
     public mapWaypoints[] waypoints;
     public GameObject[] enemyPortals;
-    Animator animator;
+    [Header("enemy portal loot")]
+    public GameObject lootPrefab;
+    public string lootName;
 
+    Animator animator;
     public EventSystem eventSystem;
     public Button b1, b2, b3, b4;
 
@@ -37,7 +40,19 @@ public class playerButtonControl : MonoBehaviour {
     {
         for(int g = 0; g < enemyPortals.Length;g++)
         {
-            if (gm.Pet.petElement == enemyPortals[g].GetComponent<destroySpawner>().portalsElement) { Destroy(enemyPortals[g]); }
+            if (gm.Pet.petElement == enemyPortals[g].GetComponent<destroySpawner>().portalsElement)
+            {
+                GameObject spawnedLoot = Instantiate(lootPrefab, enemyPortals[g].transform.position, Quaternion.identity);
+                for (int u = 0; u < gm.GetComponent<gamemanagement>().AllItems.Length; u++)
+                {
+                    if (lootName == gm.GetComponent<gamemanagement>().AllItems[u].name)
+                    {
+                        spawnedLoot.name = gm.GetComponent<gamemanagement>().AllItems[u].name;
+                        spawnedLoot.GetComponentInChildren<SpriteRenderer>().sprite = gm.GetComponent<gamemanagement>().AllItems[u].itemImage;
+                    }
+                }
+                Destroy(enemyPortals[g]);
+            }
         }
     }
     public void disableSpawnerUi()

@@ -7,11 +7,11 @@ public class playerAttacking : MonoBehaviour {
 
     //[Range(0,3)]
     public int playerHealth;
+    public float hpMax = 500;
     public bool attackingOn,atkAllow=true;
     public Collider2D attackCollider;
 
     public Image UIhealth;
-    float hpMax = 1200;
     float healthCalculated;
     public Vector2 bedLocation;
     public gamemanagement gm;

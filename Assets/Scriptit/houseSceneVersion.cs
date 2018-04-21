@@ -48,6 +48,7 @@ public class houseSceneVersion : MonoBehaviour {
         {
             player.GetComponent<playerButtonControl>().sleep.gameObject.SetActive(true);
             player.GetComponent<playerButtonControl>().bedPosition = this.gameObject.transform.position;
+            player.GetComponent<playerAttacking>().playerHealth = Mathf.RoundToInt(player.GetComponent<playerAttacking>().hpMax);
         }
     }
     void OnTriggerExit2D(Collider2D other)

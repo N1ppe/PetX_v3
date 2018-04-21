@@ -10,7 +10,7 @@ public class spawnerV2 : MonoBehaviour
 
     void Start()
     {
-        InvokeRepeating("deadMobTestingLoop", 1, 2);
+        InvokeRepeating("deadMobTestingLoop", 1, 5);
         StartCoroutine(delayDisable());
         EnemiesToSpawnv2[0].posToSWalkTo = this.gameObject.transform.position + EnemiesToSpawnv2[0].enemyOffset;
         EnemiesToSpawnv2[1].posToSWalkTo = this.gameObject.transform.position + EnemiesToSpawnv2[1].enemyOffset;
