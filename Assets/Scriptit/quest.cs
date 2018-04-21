@@ -41,38 +41,38 @@ public class quest : MonoBehaviour
         //start text
         if (questName == missionNames.Gaia)
         {
-            gm.GetComponent<gamemanagement>().questLogTexts[0].text = gm.GetComponent<gamemanagement>().quests[0].questName;
-            gm.GetComponent<gamemanagement>().questUiSprites[0].sprite = gm.GetComponent<gamemanagement>().quests[0].qSprt;
+            gm.GetComponent<gamemanagement>().questLogTexts[0].text = gm.GetComponent<gamemanagement>().quests[1].questName;
+            gm.GetComponent<gamemanagement>().questUiSprites[0].sprite = gm.GetComponent<gamemanagement>().quests[1].qSprt;
         }
         if (questName == missionNames.Holy)
         {
-            gm.GetComponent<gamemanagement>().questLogTexts[1].text = gm.GetComponent<gamemanagement>().quests[1].questName;
-            gm.GetComponent<gamemanagement>().questUiSprites[1].sprite = gm.GetComponent<gamemanagement>().quests[1].qSprt;
+            gm.GetComponent<gamemanagement>().questLogTexts[1].text = gm.GetComponent<gamemanagement>().quests[2].questName;
+            gm.GetComponent<gamemanagement>().questUiSprites[1].sprite = gm.GetComponent<gamemanagement>().quests[2].qSprt;
         }
         if (questName == missionNames.PrimalWater)
         {
-            gm.GetComponent<gamemanagement>().questLogTexts[2].text = gm.GetComponent<gamemanagement>().quests[2].questName;
-            gm.GetComponent<gamemanagement>().questUiSprites[2].sprite = gm.GetComponent<gamemanagement>().quests[2].qSprt;
+            gm.GetComponent<gamemanagement>().questLogTexts[2].text = gm.GetComponent<gamemanagement>().quests[3].questName;
+            gm.GetComponent<gamemanagement>().questUiSprites[2].sprite = gm.GetComponent<gamemanagement>().quests[3].qSprt;
         }
         if (questName == missionNames.PrimalEarth)
         {
-            gm.GetComponent<gamemanagement>().questLogTexts[3].text = gm.GetComponent<gamemanagement>().quests[3].questName;
-            gm.GetComponent<gamemanagement>().questUiSprites[3].sprite = gm.GetComponent<gamemanagement>().quests[3].qSprt;
+            gm.GetComponent<gamemanagement>().questLogTexts[3].text = gm.GetComponent<gamemanagement>().quests[4].questName;
+            gm.GetComponent<gamemanagement>().questUiSprites[3].sprite = gm.GetComponent<gamemanagement>().quests[4].qSprt;
         }
         if (questName == missionNames.BlackIce)
         {
-            gm.GetComponent<gamemanagement>().questLogTexts[4].text = gm.GetComponent<gamemanagement>().quests[4].questName;
-            gm.GetComponent<gamemanagement>().questUiSprites[4].sprite = gm.GetComponent<gamemanagement>().quests[4].qSprt;
+            gm.GetComponent<gamemanagement>().questLogTexts[4].text = gm.GetComponent<gamemanagement>().quests[5].questName;
+            gm.GetComponent<gamemanagement>().questUiSprites[4].sprite = gm.GetComponent<gamemanagement>().quests[5].qSprt;
         }
         if (questName == missionNames.IceFire)
         {
-            gm.GetComponent<gamemanagement>().questLogTexts[5].text = gm.GetComponent<gamemanagement>().quests[5].questName;
-            gm.GetComponent<gamemanagement>().questUiSprites[5].sprite = gm.GetComponent<gamemanagement>().quests[5].qSprt;
+            gm.GetComponent<gamemanagement>().questLogTexts[5].text = gm.GetComponent<gamemanagement>().quests[6].questName;
+            gm.GetComponent<gamemanagement>().questUiSprites[5].sprite = gm.GetComponent<gamemanagement>().quests[6].qSprt;
         }
         if (questName == missionNames.Thunderstorm)
         {
-            gm.GetComponent<gamemanagement>().questLogTexts[6].text = gm.GetComponent<gamemanagement>().quests[6].questName;
-            gm.GetComponent<gamemanagement>().questUiSprites[6].sprite = gm.GetComponent<gamemanagement>().quests[6].qSprt;
+            gm.GetComponent<gamemanagement>().questLogTexts[6].text = gm.GetComponent<gamemanagement>().quests[7].questName;
+            gm.GetComponent<gamemanagement>().questUiSprites[6].sprite = gm.GetComponent<gamemanagement>().quests[7].qSprt;
         }
         /*
         string questNameCheck="";
@@ -105,13 +105,13 @@ public class quest : MonoBehaviour
     public void missionsUiUpdating()
     {
         string questNameCheck = "";
-        if (questName == missionNames.Gaia) { questNameCheck = gm.GetComponent<gamemanagement>().quests[0].questName; }
-        if (questName == missionNames.Holy) { questNameCheck = questNameCheck = gm.GetComponent<gamemanagement>().quests[1].questName; }
-        if (questName == missionNames.PrimalWater) { questNameCheck = questNameCheck = gm.GetComponent<gamemanagement>().quests[2].questName; }
-        if (questName == missionNames.PrimalEarth) { questNameCheck = gm.GetComponent<gamemanagement>().quests[3].questName; }
-        if (questName == missionNames.BlackIce) { questNameCheck = gm.GetComponent<gamemanagement>().quests[4].questName; }
-        if (questName == missionNames.IceFire) { questNameCheck = gm.GetComponent<gamemanagement>().quests[5].questName; }
-        if (questName == missionNames.Thunderstorm) { questNameCheck = gm.GetComponent<gamemanagement>().quests[6].questName; }
+        if (questName == missionNames.Gaia) { questNameCheck = gm.GetComponent<gamemanagement>().quests[1].questName; }
+        if (questName == missionNames.Holy) { questNameCheck = questNameCheck = gm.GetComponent<gamemanagement>().quests[2].questName; }
+        if (questName == missionNames.PrimalWater) { questNameCheck = questNameCheck = gm.GetComponent<gamemanagement>().quests[3].questName; }
+        if (questName == missionNames.PrimalEarth) { questNameCheck = gm.GetComponent<gamemanagement>().quests[4].questName; }
+        if (questName == missionNames.BlackIce) { questNameCheck = gm.GetComponent<gamemanagement>().quests[5].questName; }
+        if (questName == missionNames.IceFire) { questNameCheck = gm.GetComponent<gamemanagement>().quests[6].questName; }
+        if (questName == missionNames.Thunderstorm) { questNameCheck = gm.GetComponent<gamemanagement>().quests[7].questName; }
 
         for (int r = 0; r < gm.GetComponent<gamemanagement>().questLogTexts.Length; r++)
         {

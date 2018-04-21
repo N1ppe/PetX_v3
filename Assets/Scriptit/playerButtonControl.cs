@@ -51,6 +51,8 @@ public class playerButtonControl : MonoBehaviour {
                         spawnedLoot.GetComponentInChildren<SpriteRenderer>().sprite = gm.GetComponent<gamemanagement>().AllItems[u].itemImage;
                     }
                 }
+                gm.GetComponent<gamemanagement>().destroyedEnemyPortals = gm.GetComponent<gamemanagement>().destroyedEnemyPortals + 1;
+                gm.GetComponent<gamemanagement>().mainQuestUpdater();
                 Destroy(enemyPortals[g]);
             }
         }

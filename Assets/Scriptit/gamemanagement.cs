@@ -40,10 +40,14 @@ public class gamemanagement : MonoBehaviour {
     public Text[] questLogTexts;//,logItemCheckTexts;
     public GameObject evolvingCanvas;
     public Image petImg, petNextEvolveImg,animation;
+    public Text[] petStatText;
     public Text[] reppuText;
     public Image reppuItemImg;
+    [Header("Main quest state")]
+    [Range(0,9)]
+    public int destroyedEnemyPortals=0;
 
-	void Start () {
+    void Start () {
         player = GameObject.FindWithTag("Player");
         Pet = AllMonsters[0];
         //Cursor.visible = false;
@@ -59,7 +63,46 @@ public class gamemanagement : MonoBehaviour {
         moneyCounter();
         staminaBar();
         manaBar();
+        petStatsUI();
+        mainQuestUpdater();
 	}
+    public void mainQuestUpdater()
+    {
+        switch (destroyedEnemyPortals)
+        {
+            case 1:
+                questLogTexts[0].text = "Monster portals 1/9";
+                break;
+            case 2:
+                questLogTexts[0].text = "Monster portals 2/9";
+                break;
+            case 3:
+                questLogTexts[0].text = "Monster portals 3/9";
+                break;
+            case 4:
+                questLogTexts[0].text = "Monster portals 4/9";
+                break;
+            case 5:
+                questLogTexts[0].text = "Monster portals 5/9";
+                break;
+            case 6:
+                questLogTexts[0].text = "Monster portals 6/9";
+                break;
+            case 7:
+                questLogTexts[0].text = "Monster portals 7/9";
+                break;
+            case 8:
+                questLogTexts[0].text = "Monster portals 8/9";
+                break;
+            case 9:
+                questLogTexts[0].text = "Monster portals destroyed";
+                break;
+            default:
+                questLogTexts[0].text = "Rid the world from monster portals 0/9";
+                break;
+
+        }
+    }
     public void clockChanger()
     {
         dayText.text = day.ToString();
@@ -100,6 +143,13 @@ public class gamemanagement : MonoBehaviour {
     {
         staminaCalculated = player.GetComponent<playerMovement>().stamina / 100f;
         uIStamina.fillAmount =staminaCalculated;
+    }
+    public void petStatsUI()
+    {
+        petStatText[0].text ="Agility: " + Pet.agility;
+        petStatText[1].text = "Wisdom: " + Pet.wisdom;
+        petStatText[2].text = "Strength: " + Pet.strength;
+        petStatText[3].text = "Luck: " + Pet.luck;
     }
     public void currentPetAttackGain()
     {
