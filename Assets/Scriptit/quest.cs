@@ -123,6 +123,7 @@ public class quest : MonoBehaviour
                     {
                         gm.GetComponent<gamemanagement>().questLogTexts[r].text = parent.GetComponent<quest>().logtexts[parent.GetComponent<quest>().missionAdvancement];
                         parent.GetComponent<quest>().missionAdvancement = parent.GetComponent<quest>().missionAdvancement + 1;
+                        gm.GetComponent<gamemanagement>().questInfoOperation();
                         return;
                     }
                 }
