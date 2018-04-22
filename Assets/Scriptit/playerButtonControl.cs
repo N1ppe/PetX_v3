@@ -384,6 +384,7 @@ public class mapWaypoints
     public string locationName;
     public bool unlocked = false;
     public Vector3 loc;
+    public GameObject teleport;
     }
 public enum openCanvas
 {

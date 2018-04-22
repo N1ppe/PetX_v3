@@ -6,11 +6,12 @@ using UnityEngine.EventSystems;
 
 public class cheats : MonoBehaviour {
 
-    public GameObject cheatUIpart,gm;
+    public GameObject cheatUIpart,gm,player;
 	void Start ()
     {
         gm = GameObject.FindGameObjectWithTag("GameManagementTag");
-	}
+        player = GameObject.FindGameObjectWithTag("Player");
+    }
 	void Update ()
     {
         //if (cheatUIpart.activeInHierarchy == true)
@@ -24,6 +25,14 @@ public class cheats : MonoBehaviour {
             gm.GetComponent<gamemanagement>().AllMonsters[loopy].allowEvolution = true;
         }
     }
+    public void openAllTeleports()
+    {
+        for (int loopyTp = 0; loopyTp < player.GetComponent<playerButtonControl>().waypoints.Length; loopyTp++)
+        {
+            player.GetComponent<playerButtonControl>().waypoints[loopyTp].unlocked = true;
+            player.GetComponent<playerButtonControl>().waypoints[loopyTp].teleport.GetComponent<PortalActivator>().isActive = true;
+        }
+    }
 
     public void cheatbuttonCheck()
     {
@@ -31,7 +40,7 @@ public class cheats : MonoBehaviour {
         {
             if (EventSystem.current.currentSelectedGameObject.name == "cheat1") { allPetsOpen(); EventSystem.current.currentSelectedGameObject.GetComponentInChildren<Text>().text = "All pets in use"; }
             if (EventSystem.current.currentSelectedGameObject.name == "cheat2") { gm.GetComponent<gamemanagement>().money = 1000; }
-            if (EventSystem.current.currentSelectedGameObject.name == "cheat3") { }
+            if (EventSystem.current.currentSelectedGameObject.name == "cheat3") { openAllTeleports(); EventSystem.current.currentSelectedGameObject.GetComponentInChildren<Text>().text = "All waypoints open"; }
             if (EventSystem.current.currentSelectedGameObject.name == "cheat4") { }
             if (EventSystem.current.currentSelectedGameObject.name == "cheat5") { }
             if (EventSystem.current.currentSelectedGameObject.name == "cheat6") { }

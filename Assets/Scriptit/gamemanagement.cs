@@ -190,10 +190,10 @@ public class gamemanagement : MonoBehaviour {
     }
     public void petStatsUI()
     {
-        petStatText[0].text ="Agility: " + Pet.agility;
-        petStatText[1].text = "Wisdom: " + Pet.wisdom;
-        petStatText[2].text = "Strength: " + Pet.strength;
-        petStatText[3].text = "Luck: " + Pet.luck;
+        petStatText[0].text ="AGI: " + Pet.agility;
+        petStatText[1].text = "WIS: " + Pet.wisdom;
+        petStatText[2].text = "STR: " + Pet.strength;
+        petStatText[3].text = "LUK: " + Pet.luck;
     }
     public void currentPetAttackGain()
     {
