@@ -46,13 +46,15 @@ public class PortalActivator : MonoBehaviour {
         { player.GetComponent<playerButtonControl>().waypoints[4].unlocked = true; }
         if (ThisPortalName == thisPortalName.wetlands)
         { player.GetComponent<playerButtonControl>().waypoints[5].unlocked = true; }
-        if (ThisPortalName == thisPortalName.seven)
+        if (ThisPortalName == thisPortalName.cave)
         { player.GetComponent<playerButtonControl>().waypoints[6].unlocked = true; }
-        if (ThisPortalName == thisPortalName.eight)
+        if (ThisPortalName == thisPortalName.summit)
         { player.GetComponent<playerButtonControl>().waypoints[7].unlocked = true; }
+        if (ThisPortalName == thisPortalName.clouds)
+        { player.GetComponent<playerButtonControl>().waypoints[8].unlocked = true; }
     }
 }
 public enum thisPortalName
 {
-    home,forest,towngym,earth,bazaar,wetlands,seven,eight
+    home,forest,towngym,earth,bazaar,wetlands,cave,summit,clouds
 }

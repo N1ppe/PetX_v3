@@ -36,7 +36,7 @@ public class MenuImageChanger : MonoBehaviour {
 
     void ChangeImage()
     {
-        int rand = Random.Range(0, 3);
+        int rand = Random.Range(0, 4);
 
         if (rand == 0)
         {
