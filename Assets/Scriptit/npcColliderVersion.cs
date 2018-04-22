@@ -53,7 +53,8 @@ public class npcColliderVersion : MonoBehaviour {
                 {
                     //seenThisNpc = false;
                     screenCanvas.SetActive(false);
-                    screenCanvas.GetComponentInChildren<Text>().text = "";
+                    player.GetComponent<playerMovement>().enabled = true;
+                    //screenCanvas.GetComponentInChildren<Text>().text = "";
                 }
             }
         }
@@ -80,6 +81,7 @@ public class npcColliderVersion : MonoBehaviour {
             if (GetComponent<afterQuestSpeech>().enabled == false)
             {
                 screenCanvas.GetComponentInChildren<Text>().text = texts[0];
+                player.GetComponent<playerMovement>().enabled = false;
             }
         }
     }

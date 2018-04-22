@@ -34,7 +34,7 @@ public class afterQuestSpeech : MonoBehaviour {
                 else
                 {
                     screenCanvas.SetActive(false);
-                    screenCanvas.GetComponentInChildren<Text>().text = "";
+                    //screenCanvas.GetComponentInChildren<Text>().text = "";
                 }
             }
         }
@@ -43,16 +43,36 @@ public class afterQuestSpeech : MonoBehaviour {
     {
         if (other.tag == "Player")
         {
-            screenCanvas.SetActive(true);
-            if(GetComponent<npcColliderVersion>().enabled == false)
+            //screenCanvas.GetComponentInChildren<Text>().text = "";
+            if (other.tag == "Player")
             {
-                screenCanvas.GetComponentInChildren<Text>().text = texts[0];
+                if (Input.GetButtonDown("interract"))
+                {
+                    //screenCanvas.SetActive(true);
+                }
+                if (GetComponent<npcColliderVersion>().enabled == false)
+                {
+                    screenCanvas.GetComponentInChildren<Text>().text = texts[0];
+                    player.GetComponent<playerMovement>().enabled = true;
+                    screenCanvas.SetActive(true);
+                }
             }
         }
     }
     void OnTriggerStay2D(Collider2D other)
-    {
-
+    {/*
+        if (other.tag == "Player")
+        {
+            if (Input.GetButtonDown("interract"))
+            {
+                //screenCanvas.SetActive(true);
+            }
+            if (GetComponent<npcColliderVersion>().enabled == false)
+            {
+                screenCanvas.GetComponentInChildren<Text>().text = texts[0];
+                player.GetComponent<playerMovement>().enabled = true;
+            }
+        }*/
     }
     void OnTriggerExit2D(Collider2D other)
     {
