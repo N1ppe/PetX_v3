@@ -13,6 +13,7 @@ public class shopVendor : MonoBehaviour
     bool allowBuy = false;
     public itemsInShop[] buyButtons,sellButtons;
     public int itemToBuyINT=10,itemToSellINT=10;
+    public specialShop questShop;
 
 	void Start ()
     {
@@ -221,6 +222,24 @@ public class shopVendor : MonoBehaviour
         {
             if (Input.GetButtonDown("interract"))
             {
+                switch (questShop)
+                {
+                    case specialShop.NONE:
+                        buyButtons[0].itemNameHolder.text = "Baguette";
+                        buyButtons[1].itemNameHolder.text = "";
+                        buyButtons[2].itemNameHolder.text = "";
+                        break;
+                    case specialShop.choko:
+                        buyButtons[0].itemNameHolder.text = "Chocolate";
+                        buyButtons[1].itemNameHolder.text = "";
+                        buyButtons[2].itemNameHolder.text = "";
+                        break;
+                    case specialShop.icecream:
+                        buyButtons[0].itemNameHolder.text = "Icecream";
+                        buyButtons[1].itemNameHolder.text = "";
+                        buyButtons[2].itemNameHolder.text = "";
+                        break;
+                }
                 shopCanvas.SetActive(true);
                 Time.timeScale = 0;
             }
@@ -228,6 +247,10 @@ public class shopVendor : MonoBehaviour
     }
     void OnTriggerExit2D(Collider2D other)
     {
+    }
+    public enum specialShop
+    {
+        NONE,choko,icecream
     }
 }
 [System.Serializable]

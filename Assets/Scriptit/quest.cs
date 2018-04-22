@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class quest : MonoBehaviour
 {
@@ -19,6 +20,9 @@ public class quest : MonoBehaviour
     public int advCapInt = 0;
     bool clickCheck;
 
+    //------special quest variables
+    bool icecrm, chocolat;
+
     void Start ()
     {
         gm = GameObject.FindWithTag("GameManagementTag");
@@ -31,9 +35,23 @@ public class quest : MonoBehaviour
         }
         else { clickCheck = false; }
 
-        if (isQuestAdvancer == true)
+        //special quest, bought items
+        if (questName == missionNames.IceFire && startedQuest == true)
         {
-            //missionAndvancement = parent.GetComponent<quest>().missionAndvancement;
+            for (int chokocream = 0; chokocream < gm.GetComponent<gamemanagement>().playersBackpack.Length; chokocream++)
+            {
+                if (advCapInt == 2)
+                {
+                    if (gm.GetComponent<gamemanagement>().playersBackpack[chokocream].name == "Chocolate" || gm.GetComponent<gamemanagement>().playersBackpack[chokocream].name == "Icecream")
+                    {
+                        Debug.Log("choko cream thing");
+                        //----------------------------------------
+                        if (gm.GetComponent<gamemanagement>().playersBackpack[chokocream].name == "Chocolate") { chocolat = true; }
+                        if (gm.GetComponent<gamemanagement>().playersBackpack[chokocream].name == "Icecream") { icecrm = true; }
+                        //----------------------------------------
+                    }
+                }
+            }
         }
     }
     public void missionsUi()
@@ -298,63 +316,7 @@ public class quest : MonoBehaviour
                 { missionsUiUpdating(); }
                 break;
             case missionNames.IceFire:
-                if (parent.GetComponent<quest>().missionAdvancement == 0 && advCapInt == 1)
-                {
-                    for (int e = 0; e < gm.GetComponent<gamemanagement>().playersBackpack.Length; e++)
-                    {
-                        if (gm.GetComponent<gamemanagement>().playersBackpack[e].name == "")
-                        {
-                            gm.GetComponent<gamemanagement>().playersBackpack[e].name = gm.GetComponent<gamemanagement>().AllItems[9].name;
-                            gm.GetComponent<gamemanagement>().playersBackpack[e].description = gm.GetComponent<gamemanagement>().AllItems[9].description;
-                            gm.GetComponent<gamemanagement>().playersBackpack[e].itemPropertyInt = gm.GetComponent<gamemanagement>().AllItems[9].itemPropertyInt;
-                            gm.GetComponent<gamemanagement>().playersBackpack[e].sellCost = gm.GetComponent<gamemanagement>().AllItems[9].sellCost;
-                            gm.GetComponent<gamemanagement>().playersBackpack[e].itemImage = gm.GetComponent<gamemanagement>().AllItems[9].itemImage;
-                            missionsUiUpdating();
-                            return;
-                        }
-                    }
-                }
-                if (parent.GetComponent<quest>().missionAdvancement == 1 && advCapInt == 2)
-                {
-                    for (int e = 0; e < gm.GetComponent<gamemanagement>().playersBackpack.Length; e++)
-                    {
-                        if (gm.GetComponent<gamemanagement>().playersBackpack[e].name == "")
-                        {
-                            gm.GetComponent<gamemanagement>().playersBackpack[e].name = gm.GetComponent<gamemanagement>().AllItems[8].name;
-                            gm.GetComponent<gamemanagement>().playersBackpack[e].description = gm.GetComponent<gamemanagement>().AllItems[8].description;
-                            gm.GetComponent<gamemanagement>().playersBackpack[e].itemPropertyInt = gm.GetComponent<gamemanagement>().AllItems[8].itemPropertyInt;
-                            gm.GetComponent<gamemanagement>().playersBackpack[e].sellCost = gm.GetComponent<gamemanagement>().AllItems[8].sellCost;
-                            gm.GetComponent<gamemanagement>().playersBackpack[e].itemImage = gm.GetComponent<gamemanagement>().AllItems[8].itemImage;
-                            missionsUiUpdating();
-                            return;
-                        }
-                    }
-                }
-
-                if (parent.GetComponent<quest>().missionAdvancement == 2 && advCapInt == 3)
-                {
-                    for (int e = 0; e < gm.GetComponent<gamemanagement>().playersBackpack.Length; e++)
-                    {
-                        if (gm.GetComponent<gamemanagement>().playersBackpack[e].name == gm.GetComponent<gamemanagement>().AllItems[8].name)
-                        {
-                            gm.GetComponent<gamemanagement>().playersBackpack[e].name = "";
-                            gm.GetComponent<gamemanagement>().playersBackpack[e].description = "";
-                            gm.GetComponent<gamemanagement>().playersBackpack[e].itemPropertyInt = 0;
-                            gm.GetComponent<gamemanagement>().playersBackpack[e].sellCost = 0;
-                            gm.GetComponent<gamemanagement>().playersBackpack[e].itemImage = null;
-                        }
-                        if (gm.GetComponent<gamemanagement>().playersBackpack[e].name == gm.GetComponent<gamemanagement>().AllItems[9].name)
-                        {
-                            gm.GetComponent<gamemanagement>().playersBackpack[e].name = "";
-                            gm.GetComponent<gamemanagement>().playersBackpack[e].description = "";
-                            gm.GetComponent<gamemanagement>().playersBackpack[e].itemPropertyInt = 0;
-                            gm.GetComponent<gamemanagement>().playersBackpack[e].sellCost = 0;
-                            gm.GetComponent<gamemanagement>().playersBackpack[e].itemImage = null;
-                        }
-                    }
-                    missionsUiUpdating();
-                }
-
+                
                 break;
             case missionNames.Thunderstorm:
                 if (advCapInt == 1 && parent.GetComponent<quest>().missionAdvancement == advCapInt - 1)
@@ -392,6 +354,34 @@ public class quest : MonoBehaviour
                     break;
                 case missionNames.IceFire:
                     npcToEnable = gm.GetComponent<gamemanagement>().npcChars[6];
+                    if (isQuestAdvancer == true && chocolat==true && icecrm == true && advCapInt == 2)
+                    {
+                        for (int e = 0; e < gm.GetComponent<gamemanagement>().playersBackpack.Length; e++)
+                        {
+                            if (gm.GetComponent<gamemanagement>().playersBackpack[e].name == "Chocolate")
+                            {
+                                gm.GetComponent<gamemanagement>().playersBackpack[e].name = "";
+                                gm.GetComponent<gamemanagement>().playersBackpack[e].description = "";
+                                gm.GetComponent<gamemanagement>().playersBackpack[e].itemPropertyInt = 0;
+                                gm.GetComponent<gamemanagement>().playersBackpack[e].sellCost = 0;
+                                gm.GetComponent<gamemanagement>().playersBackpack[e].itemImage = null;
+                                //missionsUiUpdating();
+                            }
+                        }
+                        for (int er = 0; er < gm.GetComponent<gamemanagement>().playersBackpack.Length; er++)
+                        {
+                            if (gm.GetComponent<gamemanagement>().playersBackpack[er].name == "Icecream")
+                            {
+                                gm.GetComponent<gamemanagement>().playersBackpack[er].name = "";
+                                gm.GetComponent<gamemanagement>().playersBackpack[er].description = "";
+                                gm.GetComponent<gamemanagement>().playersBackpack[er].itemPropertyInt = 0;
+                                gm.GetComponent<gamemanagement>().playersBackpack[er].sellCost = 0;
+                                gm.GetComponent<gamemanagement>().playersBackpack[er].itemImage = null;
+                                //missionsUiUpdating();
+                            }
+                        }
+                        
+                    }
                     break;
             }
             npcToEnable.SetActive(true);
