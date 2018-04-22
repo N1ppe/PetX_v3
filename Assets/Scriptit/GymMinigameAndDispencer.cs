@@ -37,6 +37,7 @@ public class GymMinigameAndDispencer : MonoBehaviour
 
                         gm.GetComponent<gamemanagement>().timeOfDay = gm.GetComponent<gamemanagement>().timeOfDay + 1;
                         gm.GetComponent<gamemanagement>().money = gm.GetComponent<gamemanagement>().money - TrainingCost;
+                        gm.GetComponent<gamemanagement>().statPetEvolutions();
                         return;
                     }
                 }

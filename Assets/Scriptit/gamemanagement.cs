@@ -54,8 +54,9 @@ public class gamemanagement : MonoBehaviour {
     public GameObject blockToMoveUp;
     IEnumerator LerpObject()
     {
-        //blockToMoveUp.GetComponent<RectTransform>().anchoredPosition = startPosition;
+        blockToMoveUp.GetComponent<RectTransform>().anchoredPosition = startPosition;
         blockToMoveUp.GetComponentInChildren<Text>().GetComponent<CanvasRenderer>().SetAlpha(1f);
+        currentTime = 0;
         while (currentTime <= timeOfTravel)
         {
             currentTime += 2*Time.deltaTime;
@@ -64,23 +65,30 @@ public class gamemanagement : MonoBehaviour {
             blockToMoveUp.GetComponent<RectTransform>().anchoredPosition = Vector3.Lerp(startPosition, endPosition, normalizedValue);
             blockToMoveUp.GetComponentInChildren<Text>().CrossFadeAlpha(0f,2.5f, false);
             yield return null;
-            //blockToMoveUp.GetComponentInChildren<Text>().text = "";
         }
     }
     //--------------------------------------------------
 
-    
     void Start () {
         player = GameObject.FindWithTag("Player");
         Pet = AllMonsters[0];
         //Cursor.visible = false;
         //StartCoroutine(evolutionUI());
         reppuVisuals();
+        statPetEvolutions();
     }
-	void Update ()
+    void Update ()
     {
         petChangingInRuntime();
-        statPetEvolutions();//----------------------------------hard code pakko---------------------------------
+        //statPetEvolutions();//----------------------------------hard code pakko---------------------------------
+        for (int r = 0; r < AllMonsters.Length; r++)
+        {
+            if (AllMonsters[r].allowEvolution == true)
+            {
+                AllMonsters[r].inMonsterCatalog.sprite = AllMonsters[r].petVisual;
+            }
+            else if (AllMonsters[r].allowEvolution == false) { AllMonsters[r].inMonsterCatalog.sprite = lukkoImg; }
+        }
 
         clockChanger();
         moneyCounter();
@@ -91,11 +99,15 @@ public class gamemanagement : MonoBehaviour {
 	}
     public void questInfoOperation()
     {
+        Debug.Log("quest operation");
+        blockToMoveUp.GetComponent<RectTransform>().anchoredPosition = startPosition;
         blockToMoveUp.GetComponentInChildren<Text>().text = "Quest advanced";
         StartCoroutine(LerpObject());
     }
     public void evolutionInfoOperation()
     {
+        Debug.Log("evolution operation");
+        blockToMoveUp.GetComponent<RectTransform>().anchoredPosition = startPosition;
         blockToMoveUp.GetComponentInChildren<Text>().text = "New evolution achieved";
         StartCoroutine(LerpObject());
     }
@@ -233,44 +245,34 @@ public class gamemanagement : MonoBehaviour {
     }
     public void statPetEvolutions()//----------------------------------hard code what pet stat allows what next evolution----------------------------------
     {
-
-        for (int r = 0; r < AllMonsters.Length; r++)
-        {
-            if (AllMonsters[r].allowEvolution == true)
-            {
-                AllMonsters[r].inMonsterCatalog.sprite = AllMonsters[r].petVisual;
-            }
-            else if (AllMonsters[r].allowEvolution == false) { AllMonsters[r].inMonsterCatalog.sprite = lukkoImg; }
-        }
-
         //Light T2 pets
         if (CurrentPetInt == 2) //Grass
         {
             //if (Pet.strength == 0 && Pet.agility == 0 && Pet.wisdom == 100 && Pet.luck == 0)
             if (Pet.wisdom >= 100)
             {
-                AllMonsters[3].allowEvolution = true; evolutionInfoOperation();
+                AllMonsters[3].allowEvolution = true; if (AllMonsters[3].bringTextUI == false) { evolutionInfoOperation(); AllMonsters[3].bringTextUI = true; }
             }
         }
         if (CurrentPetInt == 2) //LightFire
         {
             if (Pet.strength >= 50 && Pet.wisdom >= 50)
             {
-                AllMonsters[4].allowEvolution = true; evolutionInfoOperation();
+                AllMonsters[4].allowEvolution = true; if (AllMonsters[4].bringTextUI == false) { evolutionInfoOperation(); AllMonsters[4].bringTextUI = true; }
             }
         }
         if (CurrentPetInt == 2) //Water
         {
             if (Pet.agility >= 100)
             {
-                AllMonsters[5].allowEvolution = true; evolutionInfoOperation();
+                AllMonsters[5].allowEvolution = true; if (AllMonsters[5].bringTextUI == false) { evolutionInfoOperation(); AllMonsters[5].bringTextUI = true; }
             }
         }
         if (CurrentPetInt == 2) //Air
         {
             if (Pet.agility >= 50 && Pet.luck >= 50)
             {
-                AllMonsters[6].allowEvolution = true; evolutionInfoOperation();
+                AllMonsters[6].allowEvolution = true; if (AllMonsters[6].bringTextUI == false) { evolutionInfoOperation(); AllMonsters[6].bringTextUI = true; }
             }
         }
 
@@ -279,7 +281,7 @@ public class gamemanagement : MonoBehaviour {
         {
             if (Pet.agility >= 300)
             {
-                AllMonsters[13].allowEvolution = true; evolutionInfoOperation();
+                AllMonsters[13].allowEvolution = true; if (AllMonsters[13].bringTextUI == false) { evolutionInfoOperation(); AllMonsters[13].bringTextUI = true; }
             }
         }
         if (CurrentPetInt == 5 || CurrentPetInt == 7) //Holy
@@ -288,7 +290,7 @@ public class gamemanagement : MonoBehaviour {
             {
                 if (Pet.wisdom >= 300)
                 {
-                    AllMonsters[14].allowEvolution = true; evolutionInfoOperation();
+                    AllMonsters[14].allowEvolution = true; if (AllMonsters[14].bringTextUI == false) { evolutionInfoOperation(); AllMonsters[14].bringTextUI = true; }
                 }
             }
         }
@@ -297,28 +299,28 @@ public class gamemanagement : MonoBehaviour {
         {
             if (Pet.strength >= 100)
             {
-                AllMonsters[7].allowEvolution = true; evolutionInfoOperation();
+                AllMonsters[7].allowEvolution = true; if (AllMonsters[7].bringTextUI == false) { evolutionInfoOperation(); AllMonsters[7].bringTextUI = true; }
             }
         }
         if (CurrentPetInt == 3) //DarkFire
         {
             if (Pet.strength >= 50 && Pet.wisdom >= 50)
             {
-                AllMonsters[8].allowEvolution = true; evolutionInfoOperation();
+                AllMonsters[8].allowEvolution = true; if (AllMonsters[8].bringTextUI == false) { evolutionInfoOperation(); AllMonsters[8].bringTextUI = true; }
             }
         }
         if (CurrentPetInt == 3) //Ice
         {
             if (Pet.agility >= 50 && Pet.wisdom >= 50)
             {
-                AllMonsters[9].allowEvolution = true; evolutionInfoOperation();
+                AllMonsters[9].allowEvolution = true; if (AllMonsters[9].bringTextUI == false) { evolutionInfoOperation(); AllMonsters[9].bringTextUI = true; }
             }
         }
         if (CurrentPetInt == 3) //Electricity
         {
             if (Pet.luck >= 100)
             {
-                AllMonsters[10].allowEvolution = true; evolutionInfoOperation();
+                AllMonsters[10].allowEvolution = true; if (AllMonsters[10].bringTextUI == false) { evolutionInfoOperation(); AllMonsters[10].bringTextUI = true; }
             }
         }
 
@@ -327,14 +329,14 @@ public class gamemanagement : MonoBehaviour {
         {
             if (Pet.agility >= 150 && Pet.wisdom >= 150)
             {
-                AllMonsters[15].allowEvolution = true; evolutionInfoOperation();
+                AllMonsters[15].allowEvolution = true; if (AllMonsters[15].bringTextUI == false) { evolutionInfoOperation(); AllMonsters[15].bringTextUI = true; }
             }
         }
         if (CurrentPetInt ==  8) //Primal Earth
         {
             if (Pet.strength >= 300)
             {
-                AllMonsters[16].allowEvolution = true; evolutionInfoOperation();
+                AllMonsters[16].allowEvolution = true; if (AllMonsters[16].bringTextUI == false) { evolutionInfoOperation(); AllMonsters[16].bringTextUI = true; }
             }
         }
         if (CurrentPetInt == 9 || CurrentPetInt == 10) //IceFire
@@ -343,7 +345,7 @@ public class gamemanagement : MonoBehaviour {
             {
                 if (Pet.strength >= 150 && Pet.wisdom >= 150)
                 {
-                    AllMonsters[17].allowEvolution = true; evolutionInfoOperation();
+                    AllMonsters[17].allowEvolution = true; if (AllMonsters[17].bringTextUI == false) { evolutionInfoOperation(); AllMonsters[17].bringTextUI = true; }
                 }
             }
         }
@@ -355,7 +357,7 @@ public class gamemanagement : MonoBehaviour {
             {
                 if (Pet.strength >= 100 && Pet.agility >= 100 && Pet.wisdom >= 100)
                 {
-                    AllMonsters[11].allowEvolution = true; evolutionInfoOperation();
+                    AllMonsters[11].allowEvolution = true; if (AllMonsters[11].bringTextUI == false) { evolutionInfoOperation(); AllMonsters[11].bringTextUI = true; }
                 }
             }
         }
@@ -365,7 +367,7 @@ public class gamemanagement : MonoBehaviour {
             {
                 if (Pet.agility >= 150 && Pet.luck >= 150)
                 {
-                    AllMonsters[12].allowEvolution = true; evolutionInfoOperation();
+                    AllMonsters[12].allowEvolution = true; if (AllMonsters[12].bringTextUI == false) { evolutionInfoOperation(); AllMonsters[12].bringTextUI = true; }
                 }
             }
         }
@@ -377,7 +379,7 @@ public class gamemanagement : MonoBehaviour {
             {
                 if (Pet.agility >= 999 && Pet.luck >= 999 && Pet.strength >= 999 && Pet.wisdom >= 999)
                 {
-                    AllMonsters[18].allowEvolution = true; evolutionInfoOperation();
+                    AllMonsters[18].allowEvolution = true; if (AllMonsters[18].bringTextUI == false) { evolutionInfoOperation(); AllMonsters[18].bringTextUI = true; }
                 }
             }
         }
@@ -388,7 +390,7 @@ public class gamemanagement : MonoBehaviour {
             {
                 if (Pet.agility >= 999 && Pet.luck >= 999 && Pet.strength >= 999 && Pet.wisdom >= 999)
                 {
-                    AllMonsters[19].allowEvolution = true; evolutionInfoOperation();
+                    AllMonsters[19].allowEvolution = true; if (AllMonsters[19].bringTextUI == false) { evolutionInfoOperation(); AllMonsters[19].bringTextUI = true; }
                 }
             }
         }
@@ -418,6 +420,7 @@ public class Monsters
     public int strength, agility, wisdom , luck;    //upgradable stats
     public int health, hunger, happiness, cleaniness;    //beauty
     public bool allowEvolution = false;
+    public bool bringTextUI=false;
     public Sprite petVisual;
     public Image inMonsterCatalog;
     public GameObject petInWorldPrefab,petsAttack;

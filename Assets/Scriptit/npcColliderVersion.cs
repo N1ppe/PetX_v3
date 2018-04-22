@@ -51,7 +51,7 @@ public class npcColliderVersion : MonoBehaviour {
                 }
                 else
                 {
-                    seenThisNpc = false;
+                    //seenThisNpc = false;
                     screenCanvas.SetActive(false);
                     screenCanvas.GetComponentInChildren<Text>().text = "";
                 }
@@ -77,18 +77,28 @@ public class npcColliderVersion : MonoBehaviour {
             StartCoroutine(delay()); //seenThisNpc = true;
 
             screenCanvas.SetActive(true);
-            screenCanvas.GetComponentInChildren<Text>().text = texts[0];
+            if (GetComponent<afterQuestSpeech>().enabled == false)
+            {
+                screenCanvas.GetComponentInChildren<Text>().text = texts[0];
+            }
         }
     }
     void OnTriggerExit2D(Collider2D other)
     {
-        seenThisNpc = false;
+        //seenThisNpc = false;
         screenCanvas.SetActive(false);
         screenCanvas.GetComponentInChildren<Text>().text = "";
+
+        if (seenThisNpc == true)
+        {
+            GetComponent<afterQuestSpeech>().enabled = true;
+            //Destroy(this.GetComponent<npcColliderVersion>());
+            this.enabled = false;
+        }
     }
     IEnumerator delay()
     {
-        yield return new WaitForSeconds(.1f);
+        yield return new WaitForSeconds(0.1f);
         seenThisNpc = true;
     }
 }
