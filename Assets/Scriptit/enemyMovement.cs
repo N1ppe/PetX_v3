@@ -25,7 +25,7 @@ public class enemyMovement : MonoBehaviour {
         if(EnemyState != state.dead && health>0)
         {
             distToPlayer = Vector3.Distance(this.transform.position, player.transform.position);
-            if (distToPlayer < 8 && distToPlayer > 2.25f) { EnemyState = state.following; }
+            if (distToPlayer < 8 && distToPlayer > 0) { EnemyState = state.following; }
             else if (distToPlayer <= 2.5f) { EnemyState = state.attack; }
             else if(distToPlayer >= 10f) { EnemyState = state.idle; }
             if (health <= 0) { EnemyState = state.dead; }
@@ -39,8 +39,11 @@ public class enemyMovement : MonoBehaviour {
         }
         else
         {
-            gameObject.GetComponent<BoxCollider2D>().enabled = false;
-            gm.GetComponent<gamemanagement>().currentPetAttackGain();
+            if (gameObject.GetComponent<BoxCollider2D>().enabled == true)
+            {
+                gm.GetComponent<gamemanagement>().currentPetAttackGain();
+                gameObject.GetComponent<BoxCollider2D>().enabled = false;
+            }
             StartCoroutine(deathStateOperation());
         }
     }
@@ -83,7 +86,7 @@ public class enemyMovement : MonoBehaviour {
     IEnumerator deathStateOperation()
     {
         this.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(0.25f);
         this.gameObject.GetComponent<lootDrop>().itemAssigningAndSpawn();
         Destroy(gameObject);
     }

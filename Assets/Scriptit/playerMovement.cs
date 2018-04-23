@@ -14,11 +14,13 @@ public class playerMovement : MonoBehaviour {
     void Start ()
     {
         animator = GetComponent<Animator>();
+        sprint = 4f;
     }
 
 	public void Update ()
     {
         // Sprinting speed
+        /*
         if (Input.GetButton("run") && stamina > 0 )
         {
             if(Input.GetButton("up") || Input.GetButton("down") || Input.GetButton("left") || Input.GetButton("right"))
@@ -36,6 +38,7 @@ public class playerMovement : MonoBehaviour {
                 { stamina += 0.5f; }
             }
         }
+        */
         float inputX = Input.GetAxis("Horizontal");
         float inputY = Input.GetAxis("Vertical");
 

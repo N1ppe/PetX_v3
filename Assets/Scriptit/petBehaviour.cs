@@ -93,7 +93,7 @@ public class petBehaviour : MonoBehaviour {
         }        
         if (Facing.dirFacing == Facing.directionFacing.left)
         {
-            petPosition.transform.localPosition = new Vector3(8, -2, 0);
+            petPosition.transform.localPosition = new Vector3(8, 0, 0);
             this.gameObject.transform.position = Vector2.MoveTowards(petSprite.transform.position, petPosition.transform.position, Time.deltaTime * speed);
         }
         if (Facing.dirFacing == Facing.directionFacing.up)
@@ -103,7 +103,7 @@ public class petBehaviour : MonoBehaviour {
         }
         if (Facing.dirFacing == Facing.directionFacing.right)
         {
-            petPosition.transform.localPosition = new Vector3(-8, -2, 0);
+            petPosition.transform.localPosition = new Vector3(-8, 0, 0);
             this.gameObject.transform.position = Vector2.MoveTowards(petSprite.transform.position, petPosition.transform.position, Time.deltaTime * speed);
         }
     }
